@@ -867,7 +867,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     async function carregarHero() {
         for (let i = 1; i <= 3; i++) {
             try {
-                const res = await fetch(`http://localhost:5000/api/config/slide${i}`);
+                const res = await fetch(`/api/config/slide${i}`);
                 const data = await res.json();
                 if (data && data.valor) {
                     const elemento = document.getElementById(`slide-div-${i}`);
@@ -896,7 +896,7 @@ async function carregarEstatisticas() {
 
     for (const s of stats) {
         try {
-            const res = await fetch(`http://localhost:5000/api/config/${s.chave}`);
+            const res = await fetch(`/api/config/${s.chave}`);
             const data = await res.json();
             
             if (data && data.valor) {
@@ -927,7 +927,7 @@ async function carregarEstatisticas() {
     async function carregarDicasCompletas() {
         for (let i = 1; i <= 3; i++) {
             try {
-                const res = await fetch(`http://localhost:5000/api/config/dica_completa_${i}`);
+                const res = await fetch(`/api/config/dica_completa_${i}`);
                 const data = await res.json();
                 if (data && data.valor) {
                     const info = JSON.parse(data.valor);
@@ -967,7 +967,7 @@ async function carregarGaleria() {
         
         try {
             // Pede a chave individualmente como nas outras secções
-            const res = await fetch(`http://localhost:5000/api/config/${chave}`);
+            const res = await fetch(`/api/config/${chave}`);
             const data = await res.json();
             
             if (data && data.valor) {
@@ -1053,7 +1053,7 @@ window.onload = async function() {
     console.log("🚀 Iniciando carregamento total da Maternidade...");
 
     // 1. Banner de Aviso (Independente)
-    fetch('http://localhost:5000/api/config/aviso_home')
+   fetch('/api/config/aviso_home')
         .then(res => res.json())
         .then(data => {
             if (data && data.valor) {
@@ -1137,7 +1137,7 @@ async function carregarAniversariantes() {
     }
 
     try {
-        const res = await fetch('http://localhost:5000/api/config/lista_aniversariantes');
+        const res = await fetch('/api/config/lista_aniversariantes');
         const data = await res.json();
 
         // LOG para vermos no Console (F12) o que está a chegar

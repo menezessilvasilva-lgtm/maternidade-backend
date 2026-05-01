@@ -354,11 +354,11 @@
         };
 
         try {
-            const res = await fetch('http://localhost:5000/api/pacientes/cadastrar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dadosAgendamento)
-            });
+            const res = await fetch('/api/pacientes/cadastrar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosAgendamento)
+    });
 
             const resultado = await res.json();
 
@@ -402,7 +402,7 @@ async function buscarAgendamento() {
 
     try {
         // Precisas de criar esta rota no teu backend!
-        const res = await fetch(`http://localhost:5000/api/pacientes/consultar/${bi}`);
+        const res = await fetch(`/api/pacientes/consultar/${bi}`);
         const paciente = await res.json();
 
         if (res.ok) {
