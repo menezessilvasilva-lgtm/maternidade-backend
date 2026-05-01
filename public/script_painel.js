@@ -8,7 +8,7 @@ async function carregarPacientes() {
     corpo.innerHTML = "<tr><td colspan='9' style='text-align:center;'>A sincronizar dados da Maternidade...</td></tr>";
 
     try {
-        const res = await fetch('http://localhost:5000/api/pacientes/lista');
+        const res = await fetch('/api/pacientes/lista');
         const pacientesServidor = await res.json();
 
         localStorage.removeItem('agendamentos');
@@ -133,7 +133,7 @@ document.getElementById('formEdicao').onsubmit = async function(e) {
     console.log("Tentando reagendar para:", dadosAtualizados.dataDesejada);
 
     try {
-        const resposta = await fetch(`http://localhost:5000/api/pacientes/editar/${pacienteOriginal.bi}`, {
+        const resposta = await fetch(`/api/pacientes/editar/${pacienteOriginal.bi}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dadosAtualizados)
@@ -166,7 +166,7 @@ async function eliminarAgendamento(index, nome) {
     if (confirm(`Eliminar permanentemente o agendamento de ${nome}?`)) {
         const p = pacientesAtuais[index];
         try {
-            const res = await fetch(`http://localhost:5000/api/pacientes/eliminar/${p.bi}`, { method: 'DELETE' });
+            const res = await fetch(`/api/pacientes/eliminar/${p.bi}`, { method: 'DELETE' });
             if (res.ok) {
                 await carregarPacientes();
                 alert("Eliminado com sucesso.");

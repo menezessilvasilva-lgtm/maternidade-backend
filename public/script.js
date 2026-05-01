@@ -61,7 +61,7 @@ async function carregarHeroSlides() {
 
     for (const slide of slides) {
         try {
-            const res = await fetch(`http://localhost:5000/api/config/${slide.chave}`);
+            const res = await fetch(`/api/config/${slide.chave}`);
             const dados = await res.json();
 
             if (res.ok && dados.valor) {
