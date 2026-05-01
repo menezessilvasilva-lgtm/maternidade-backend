@@ -1,0 +1,1155 @@
+/* AJUSTE PARA TELEMÓVEL (Ecrãs até 768px) */
+@media (max-width: 768px) {
+    .employee-card-wrapper {
+        flex-direction: column-reverse; /* Coloca a imagem em cima e o texto em baixo */
+        text-align: center;            /* Centraliza o texto para ficar mais bonito */
+        padding: 20px;
+    }
+
+    .employee-image-area {
+        margin-bottom: 30px;           /* Dá espaço entre a foto e o texto */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .divider-left {
+        margin: 15px auto;             /* Centraliza a linha divisória */
+    }
+
+    .employee-month-section {
+        padding: 40px 0 !important;    /* Reduz um pouco o padding para não ocupar o ecrã todo */
+    }
+}
+
+
+
+
+
+
+
+/* 1. ESTRUTURA DA PÁGINA DE SERVIÇO */
+.especialidade-body {
+    background-color: #f4f7f6;
+    /* O padding-top garante que o conteúdo comece abaixo da navbar fixa */
+    padding-top: 80px; 
+}
+
+.container-servico {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+
+
+/* Unificação da Tipografia em todo o site */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif !important; /* Força a mesma letra em tudo */
+    -webkit-font-smoothing: antialiased; /* Torna a letra mais nítida */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ajuste de pesos para hierarquia */
+h1, h2, h3, h4 {
+    font-weight: 700; /* Títulos bem negritos */
+    color: #0c1e34;   /* Azul institucional */
+}
+
+p, li, span {
+    font-weight: 400; /* Texto de leitura normal */
+    line-height: 1.6;
+}
+
+
+
+
+
+
+
+/* =========================================
+   BARRA DE NAVEGAÇÃO (NAVBAR)
+   ========================================= */
+
+
+/* --- FIXAÇÃO DA NAVBAR --- */
+.navbar {
+    background: #fff;
+    height: 80px; /* Altura controlada para evitar o espaço gigante */
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+/* --- CONTROLO DO LOGO (Resolve o erro GRAN.JPG) --- */
+.logo {
+    flex-shrink: 0;
+}
+
+.logo-img {
+    max-height: 65px; /* Limita o tamanho para não cobrir o site */
+    width: auto;
+    display: block;
+}
+
+/* --- GRUPO DA DIREITA --- */
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Espaço entre o menu e o botão vermelho */
+}
+
+/* --- LINKS (Resolve o erro colados.JPG) --- */
+.nav-links {
+    display: flex;
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+    gap: 20px; /* CRÍTICO: Cria o espaço entre INÍCIO, QUEM SOMOS, etc. */
+}
+
+.nav-links li {
+    list-style: none !important;
+}
+
+.nav-links a {
+    text-decoration: none !important;
+    color: #1a4a7a;
+    font-weight: 400; /* Letra fina como solicitado */
+    text-transform: uppercase;
+    font-size: 13px;
+    white-space: nowrap; 
+}
+
+
+
+
+
+
+/* Estilo das 3 barras do ícone mobile */
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #1a4a7a; /* Mesma cor dos links */
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Garante que o ícone não apareça no computador */
+@media screen and (min-width: 1025px) {
+    .menu-icon {
+        display: none !important;
+    }
+}
+
+
+
+
+
+/* --- VERSÃO MOBILE --- */
+@media screen and (max-width: 1024px) {
+    /* Mostra o ícone das barras */
+    .menu-icon {
+        display: flex !important;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        margin-left: 15px;
+    }
+
+    /* Esconde o menu de texto lateral e prepara para aparecer de cima */
+    .nav-links {
+        display: none; /* Começa escondido */
+        flex-direction: column;
+        position: absolute;
+        top: 80px; /* Logo abaixo da navbar */
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+
+    /* ESTA CLASSE É ATIVADA PELO JAVASCRIPT */
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    /* Ajuste do botão de urgência para não apertar no telemóvel */
+    .btn-urgencia {
+        padding: 8px 15px !important;
+        font-size: 11px !important;
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+    .nav-links {
+        display: flex !important; /* Mantemos flex */
+        visibility: hidden;       /* Mas escondemos */
+        opacity: 0;               /* Fica invisível */
+        transform: translateY(-20px); /* Começa um pouco acima */
+        transition: all 0.4s ease; /* Transição suave */
+        
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        z-index: 9999;
+    }
+
+    /* Quando a classe active entra, ele desliza para baixo */
+    .nav-links.active {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+/* --- LINKS DE NAVEGAÇÃO --- */
+.nav-links {
+    display: flex;
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+    gap: 25px; /* Espaço ideal entre os nomes */
+}
+
+.nav-links a {
+    text-decoration: none !important;
+    color: #1a4a7a;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 13px;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* Efeito de linha a surgir por baixo ao passar o rato */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ff9f43; /* Cor de destaque (Laranja/Dourado) */
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff9f43;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* --- BOTÃO DE URGÊNCIA (VERSÃO PREMIUM) --- */
+.btn-urgencia-alerta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #d9534f 0%, #c9302c 100%);
+    color: #ffffff !important;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    box-shadow: 0 4px 15px rgba(217, 83, 79, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    cursor: pointer;
+}
+
+/* Efeito de aumento e brilho no Hover */
+.btn-urgencia-alerta:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente */
+    box-shadow: 0 6px 20px rgba(217, 83, 79, 0.5);
+    filter: brightness(1.1);
+}
+
+/* Ponto pulsante dentro do botão */
+.icon-pulse {
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: inline-block;
+    animation: flash 1.5s infinite;
+}
+
+@keyframes flash {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+
+
+
+
+
+/* ==========================================================================
+
+  1. HERO SCREEN
+
+   ========================================================================== */
+
+
+
+/* --- ESTILO DA HERO SECTION EDUCATIVA --- */
+.hero-dicas-educativa {
+    background-color: #f0f4f8; /* Fundo cinza-azulado muito suave para destacar o texto */
+    padding: 80px 20px;
+    text-align: center;
+    border-bottom: 1px solid #e1e8ed;
+    margin-top: 0; /* Ajuste conforme a altura da sua navbar fixa */
+}
+
+.hero-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Tag de Categoria (Baseada no seu design atual) */
+.dica-tag {
+    display: inline-block;
+    padding: 6px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Cores por Categoria */
+.obstetricia { background-color: #ff9f43; } /* Laranja Obstetrícia */
+.pediatria { background-color: #36b9cc; }   /* Verde/Azul Pediatria */
+
+/* Título Principal */
+.dica-titulo-principal {
+    font-size: 2.8rem;
+    color: #1a4a7a; /* Azul Marinho da Maternidade */
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+/* Subtítulo Educativo */
+.dica-subtitulo {
+    font-size: 1.25rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    text-align: center; /* Centralizado na Hero para impacto visual */
+}
+
+/* Meta Info (Tempo de leitura e revisão) */
+.dica-meta-info {
+    font-size: 0.9rem;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.separador { color: #ccc; }
+
+/* Responsividade para Telemóveis */
+@media (max-width: 768px) {
+    .hero-dicas-educativa { padding: 50px 15px; }
+    .dica-titulo-principal { font-size: 1.8rem; }
+    .dica-subtitulo { font-size: 1.1rem; }
+}
+
+
+
+
+
+
+/* --- AJUSTE DE ESPAÇAMENTO DA HERO --- */
+.hero-dicas-educativa {
+    background-color: #f0f4f8; 
+    /* Aumentamos o padding superior para afastar a tag do topo */
+    padding: 120px 20px 80px 20px; 
+    text-align: center;
+    border-bottom: 1px solid #e1e8ed;
+    /* Garante que o conteúdo não suba para baixo da navbar fixa */
+    margin-top: 0; 
+}
+
+/* --- AJUSTE ESPECÍFICO NA TAG --- */
+.dica-tag {
+    display: inline-block;
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    /* Adicionamos uma margem extra para garantir que não suba demais */
+    margin-top: 20px; 
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+  CORPO DA NOTICIA
+
+   ========================================================================== */
+
+
+/* --- CONTAINER DO CORPO DO GUIA --- */
+.guia-leitura-dinamica {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    line-height: 1.8;
+    color: #333;
+}
+
+/* Justificação e Estilo do Texto */
+.guia-corpo-texto p, .guia-introducao p {
+    text-align: justify; /* Texto em bloco conforme solicitado */
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    text-justify: inter-word;
+}
+
+/* Títulos das Secções */
+.guia-corpo-texto h2 {
+    color: #1a4a7a; /* Azul Institucional */
+    font-size: 1.6rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    border-left: 5px solid #ff9f43; /* Detalhe em Laranja */
+    padding-left: 15px;
+}
+
+/* Estilo da Citação (Destaque Humano) */
+.guia-citacao {
+    background-color: #f8f9fa;
+    border-right: 5px solid #1a4a7a;
+    padding: 30px;
+    margin: 40px 0;
+    border-radius: 10px;
+}
+
+.guia-citacao p {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #1a4a7a;
+    margin-bottom: 10px;
+    text-align: left !important; /* Citações ficam melhor alinhadas à esquerda */
+}
+
+.guia-citacao cite {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #888;
+    display: block;
+}
+
+/* Responsividade Mobile */
+@media (max-width: 600px) {
+    .guia-corpo-texto h2 { font-size: 1.4rem; }
+    .guia-corpo-texto p { font-size: 1rem; }
+}
+
+
+
+
+
+
+
+
+
+/* --- CONTROLE DA IMAGEM DE APOIO --- */
+.dica-apoio-visual {
+    width: 100%;
+    max-width: 650px; /* Evita que a imagem ocupe o ecrã todo */
+    margin: 40px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.dica-apoio-visual img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Limite vertical rigoroso */
+    object-fit: cover;
+    display: block;
+}
+
+.legenda-apoio {
+    background: #f8f9fa;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    font-style: italic;
+    margin: 0;
+}
+
+/* --- QUADRO DE DESTAQUE DE SEGURANÇA --- */
+.quadro-destaque-seguranca {
+    background-color: #eef7f9; /* Azul bem clarinho para dicas */
+    border-radius: 15px;
+    padding: 25px;
+    margin: 40px 0;
+    border-left: 6px solid #36b9cc; /* Cor da Pediatria/Saúde */
+}
+
+.quadro-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #1a4a7a; /* Azul institucional */
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.quadro-conteudo p {
+    margin-bottom: 0 !important;
+    font-size: 1.05rem;
+    color: #444;
+    text-align: justify !important; /* Mantendo o padrão de justificação */
+}
+
+
+
+
+
+
+
+
+
+
+
+/* --- CONTAINER PARA CENTRALIZAR O BOTÃO --- */
+.container-central {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center;     /* Centraliza verticalmente se houver altura */
+    width: 100%;
+    margin: 50px 0;          /* Espaço superior e inferior */
+}
+
+/* --- BOTÃO PROFISSIONAL --- */
+.btn-voltar-dicas {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 12px;
+    
+    /* CORES E CONTRASTE */
+    background-color: #1a4a7a !important; /* Azul Institucional */
+    color: #000000 !important;           /* Texto Preto para visibilidade */
+    border: 2px solid #000000 !important; /* Borda preta para definição */
+    
+    /* FORMA E TAMANHO */
+    padding: 16px 40px;
+    border-radius: 50px;                 /* Design arredondado */
+    
+    /* TIPOGRAFIA */
+    text-decoration: none !important;
+    font-size: 1rem;
+    font-weight: 800;                    /* Negrito extra para destacar no azul */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* INTERATIVIDADE E SOMBRA */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 6px 20px rgba(26, 74, 122, 0.3);
+    cursor: pointer;
+}
+
+/* Efeito ao passar o mouse (Hover) */
+.btn-voltar-dicas:hover {
+    background-color: #ff9f43 !important; /* Muda para Laranja Institucional */
+    color: #000000 !important;
+    transform: scale(1.05) translateY(-3px); /* Aumenta levemente e sobe */
+    box-shadow: 0 10px 25px rgba(255, 159, 67, 0.4);
+}
+
+/* Estilo da Seta */
+.btn-voltar-dicas span {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-voltar-dicas:hover span {
+    transform: translateX(-5px); /* Seta move-se para a esquerda no hover */
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+
+  DESCRIÇÃO DA AREA
+
+   ========================================================================== */
+
+/* Estilo para o parágrafo de introdução */
+.description-lead {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+    margin-bottom: 30px;
+}
+
+/* Caixa de Atividades */
+.activities-box {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.activities-box h3 {
+    color: #0c1e34;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+}
+
+/* Lista de Itens */
+.activities-list {
+    list-style: none;
+    padding: 0;
+}
+
+.activities-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* Marcador Laranja (Bullet Point) */
+.activities-list li::before {
+    content: "\f00c"; /* Ícone de check do FontAwesome ou um círculo */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    color: #ff9f43; /* Cor laranja institucional */
+}
+
+.activities-list li strong {
+    color: #0c1e34;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Texto de Compromisso Final */
+.commitment-text {
+    font-weight: 600;
+    color: #0c1e34;
+    border-left: 4px solid #ff9f43;
+    padding-left: 15px;
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+
+  FOTO EQUIPE
+
+   ========================================================================== */
+
+
+.area-team {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.area-team h3 {
+    font-size: 2.2rem;
+    color: #0c1e34;
+    margin-bottom: 40px;
+}
+
+.team-photo-wrapper {
+    max-width: 1000px; /* Foto maior e mais imponente */
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* Sombra mais profunda */
+}
+
+.team-photo-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+
+   RODAPÉ (FOOTER) - MATERNIDADE TERESA LUAMI JAMBA
+
+   ========================================================================== */
+
+
+
+.main-footer {
+    background-color: #0c1e34; /* Azul Marinho Profundo */
+    color: #ffffff;
+    padding: 60px 0 20px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 0 5%;
+}
+
+.footer-col h4 {
+    color: #ff9f43; /* Laranja de destaque */
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Linha decorativa debaixo do título */
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 2px;
+    background-color: #ff9f43;
+}
+
+.footer-logo {
+    height: 70px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1); /* Torna o logo branco se for escuro */
+}
+
+.footer-col p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #ced4da;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #ced4da;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 0.9rem;
+}
+
+.footer-col ul li a:hover {
+    color: #ff9f43;
+    padding-left: 8px;
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.contact-info i {
+    color: #ff9f43;
+}
+
+/* Redes Sociais */
+.footer-social {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.footer-social a {
+    width: 35px;
+    height: 35px;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    background: #ff9f43;
+    transform: translateY(-3px);
+}
+
+/* Rodapé Final */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: #adb5bd;
+}
+
+/* Ajuste Responsivo */
+@media (max-width: 768px) {
+    .footer-container {
+        text-align: center;
+    }
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .footer-social {
+        justify-content: center;
+    }
+    .contact-info p {
+        justify-content: center;
+    }
+}
+
+
+
+
+
+
+
+.main-footer {
+    position: relative; /* Necessário para posicionar a imagem de fundo */
+    background-color: #1a4a7a; /* Cor de base escura para contraste */
+    color: #ffffff;
+    padding: 60px 0 20px;
+    overflow: hidden; /* Garante que a imagem não saia dos limites do rodapé */
+}
+
+/* Criamos a camada da imagem aqui */
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Substitua pelo caminho real da sua imagem da maternidade */
+    background-image: url('../assets/hero-fachada.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* EFEITO DE OFUSCAMENTO E TRANSPARÊNCIA */
+    opacity: 0.15; /* Ajuste entre 0.1 e 0.3 para ficar bem discreto */
+    filter: grayscale(100%) blur(2px); /* Deixa em tons de cinza e levemente desfocado */
+    
+    z-index: 0; /* Fica por trás do conteúdo */
+}
+
+/* Garante que o conteúdo apareça por cima da imagem */
+.footer-container, .footer-bottom {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #ff9f43; /* Cor de destaque para títulos */
+    text-transform: uppercase;
+}
+
+.footer-logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Deixa o logo branco se for escuro */
+}
+
+.footer-social a {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #ff9f43; /* Efeito hover no ícone social */
+}.main-footer {
+    position: relative; /* Necessário para posicionar a imagem de fundo */
+    background-color: #1a4a7a; /* Cor de base escura para contraste */
+    color: #ffffff;
+    padding: 60px 0 20px;
+    overflow: hidden; /* Garante que a imagem não saia dos limites do rodapé */
+}
+
+/* Criamos a camada da imagem aqui */
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Substitua pelo caminho real da sua imagem da maternidade */
+    background-image: url('../assets/estatisticas-bg.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* EFEITO DE OFUSCAMENTO E TRANSPARÊNCIA */
+    opacity: 0.15; /* Ajuste entre 0.1 e 0.3 para ficar bem discreto */
+    filter: grayscale(100%) blur(2px); /* Deixa em tons de cinza e levemente desfocado */
+    
+    z-index: 0; /* Fica por trás do conteúdo */
+}
+
+/* Garante que o conteúdo apareça por cima da imagem */
+.footer-container, .footer-bottom {
+    position: relative;
+    z-index: 1;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #ff9f43; /* Cor de destaque para títulos */
+    text-transform: uppercase;
+}
+
+.footer-logo {
+    max-width: 150px;
+    margin-bottom: 15px;
+    filter: brightness(0) invert(1); /* Deixa o logo branco se for escuro */
+}
+
+.footer-social a {
+    color: #fff;
+    margin-right: 15px;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: #ff9f43; /* Efeito hover no ícone social */
+}
+
+
+
+
+
+.social-img {
+    width: 24px; /* Tamanho ideal para o rodapé */
+    height: 24px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+    vertical-align: middle;
+}
+
+.social-img:hover {
+    transform: scale(1.2); /* Efeito de aumento ao passar o mouse */
+}
+
+
+
+
+
+/* ==========================================================================
+
+   BOTÃO CONSULTAS
+
+   ========================================================================== */
+
+
+
+.appointment-action {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.appointment-action p {
+    font-size: 1.2rem;
+    color: #0c1e34;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.btn-appointment {
+    display: inline-block;
+    background: #ff9f43; /* Laranja da instituição */
+    color: #fff;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
+    animation: pulse-orange 2s infinite;
+}
+
+.btn-appointment i {
+    margin-right: 10px;
+}
+
+.btn-appointment:hover {
+    background: #e68a2e;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(255, 159, 67, 0.4);
+    color: #fff;
+}
+
+.support-text {
+    display: block;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+    font-style: italic;
+}
+
+/* Efeito de pulsação suave */
+@keyframes pulse-orange {
+    0% { box-shadow: 0 0 0 0 rgba(255, 159, 67, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 159, 67, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 159, 67, 0); }
+}
+
+
+
+
+
+
+
+
+.whatsapp-flutuante:hover .tooltip-whatsapp {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 768px) {
+    .whatsapp-flutuante {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
+    .tooltip-whatsapp { display: none; } /* Esconde o texto no telemóvel para não tapar o ecrã */
+}

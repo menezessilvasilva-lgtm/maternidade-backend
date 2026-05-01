@@ -1,0 +1,1148 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E TIPOGRAFIA
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Remova o !important daqui para permitir que ícones e fontes específicas funcionem */
+    font-family: 'Poppins', sans-serif; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Garante que o corpo da página de notícia tenha o recuo da navbar */
+.news-page-body {
+    background-color: #f4f7f6;
+    padding-top: 80px; /* Altura da sua Navbar */
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   NAVBAR PRO - DESKTOP
+   ========================================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.nav-container {
+    width: 92%;
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ajuste do Logo e Identidade */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.logo-img {
+    height: 55px; /* Tamanho ideal para não esticar a navbar */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1; /* Mantém as duas linhas próximas */
+}
+
+.maternidade-txt {
+    color: #1a1a1a; 
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+}
+
+.jamba-txt {
+    color: #00BFFF; 
+    font-size: 22px;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+/* Navegação e Separador */
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1a4a7a;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: #ff9f43; }
+
+/* Separador Vertical */
+.nav-right-group::before {
+    content: "";
+    width: 1px;
+    height: 30px;
+    background-color: #e2e8f0;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre telefone e cadeado */
+}
+
+.btn-action-pro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;  /* Tamanho ideal para desktop */
+    height: 44px;
+    background-color: #f8fafc;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn-action-pro i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeitos Hover - Desktop Only */
+.btn-phone:hover {
+    background-color: #ff9f43; /* Laranja Jamba */
+    box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
+}
+
+.btn-lock:hover {
+    background-color: #0c1e34; /* Azul Maternidade */
+    box-shadow: 0 8px 20px rgba(12, 30, 52, 0.2);
+}
+
+.btn-action-pro:hover i {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+
+
+
+
+
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E VARIÁVEIS
+   ========================================================================== */
+:root {
+    --primary-blue: #0c1e34;
+    --jamba-orange: #ff9f43;
+    --jamba-blue-light: #00BFFF;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --shadow-soft: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ==========================================================================
+   2. HERO SECTION (BANNER PRINCIPAL)
+   ========================================================================== */
+.news-hero {
+    position: relative;
+    width: 100%;
+    min-height: 95vh;
+    background: url('../assets/act.jpg') no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 120px;
+    padding-bottom: 150px;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.news-hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(12, 30, 52, 1) 0%, 
+        rgba(12, 30, 52, 0.7) 45%, 
+        transparent 100%) !important;
+    z-index: 1;
+}
+
+.news-hero-content {
+    position: relative;
+    z-index: 5;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.news-hero .news-title {
+    color: var(--white) !important; 
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    max-width: 800px;
+    text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.news-hero .news-subtitle {
+    color: rgba(255, 255, 255, 0.95) !important;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    max-width: 650px;
+    margin-bottom: 35px;
+    font-weight: 300;
+    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   3. BOTÃO "LER NOTÍCIA"
+   ========================================================================== */
+.hero-btn-noticia {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 32px;
+    background: var(--jamba-orange);
+    color: var(--white) !important;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.hero-btn-noticia:hover {
+    background: #e68a2e;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   4. CONTEÚDO DA NOTÍCIA (CONTAINER BRANCO)
+   ========================================================================== */
+.news-main-container {
+    max-width: 950px;
+    width: 92%;
+    margin: -80px auto 100px;
+    background: var(--white);
+    position: relative;
+    z-index: 20;
+    padding: 60px 80px;
+    border-radius: 40px;
+    box-shadow: 0 40px 100px rgba(12, 30, 52, 0.12);
+}
+
+.news-body {
+    text-align: justify;
+    text-justify: inter-word; /* Melhora a distribuição do espaço entre palavras */
+    hyphens: auto;            /* Ativa hifenização */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: var(--text-dark);
+}
+
+.news-body p {
+    margin-bottom: 25px;
+}
+
+.news-body h2 {
+    margin: 45px 0 20px;
+    color: var(--text-dark);
+    font-weight: 800;
+}
+
+/* Meta-dados */
+.meta-info {
+    display: flex;
+    gap: 20px;
+    margin: 0 0 35px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.meta-info i {
+    color: var(--jamba-orange);
+    font-weight: 900 !important;
+    margin-right: 5px;
+}
+
+/* Texto de Introdução (Lead) */
+.lead-text {
+    font-size: 1.35rem !important;
+    color: var(--text-dark);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 25px;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   5. IMAGENS E CITAÇÕES
+   ========================================================================== */
+.news-featured-image {
+    width: 100%;
+    margin: 30px 0 45px;
+    text-align: center;
+}
+
+.main-img {
+    width: 100%;
+    height: auto;
+    max-height: 650px;
+    object-fit: contain;
+    border-radius: 20px;
+    background-color: #fcfcfc;
+}
+
+.img-caption {
+    text-align: center;
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 1.4;
+}
+
+.quote-container {
+    margin: 55px 0;
+    padding: 45px;
+    background: #fdfaf7; 
+    border-radius: 30px;
+    border-left: 6px solid var(--jamba-orange);
+}
+
+.human-quote {
+    text-align: justify;
+    hyphens: auto;
+    font-style: italic;
+    display: block;
+}
+
+/* Blocos de Assinatura */
+.signature-block {
+    margin-top: 35px;
+    border-top: 1px dashed #ddd;
+    padding-top: 25px;
+    text-align: right;
+}
+
+.location-date {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.author-name {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* ==========================================================================
+   6. GALERIA DE FOTOS
+   ========================================================================== */
+.news-gallery {
+    margin-top: 70px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.gallery-item {
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 18px;
+    transition: transform 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+}
+
+.news-footer-note {
+    text-align: center !important;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #f0f0f0;
+    font-weight: 700;
+    color: var(--jamba-orange);
+}
+
+/* ==========================================================================
+   7. BOTÃO VOLTAR
+   ========================================================================== */
+.container-central {
+    display: flex;
+    justify-content: center;
+    margin: 60px 0 100px;
+}
+
+.btn-voltar-noticias {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--primary-blue); 
+    color: var(--white) !important;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-voltar-noticias:hover {
+    background-color: var(--jamba-orange);
+    transform: translateX(-5px);
+}
+
+
+
+
+
+
+
+/* ==========================================================================
+   15. MODAL DE LOGIN ADMINISTRATIVO
+   ========================================================================== */
+
+.modal-admin {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 10001; /* Acima do Lightbox e do WhatsApp */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 30, 52, 0.85);
+    backdrop-filter: blur(8px); /* Blur ligeiramente mais forte para foco total */
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 8% auto; /* Um pouco mais para cima no ecrã */
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px; /* Largura um pouco maior para conforto visual */
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-header {
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    display: block;      /* Garante que o logo se comporte como bloco */
+    max-width: 100px;    /* Tamanho ideal para o modal */
+    height: auto;
+    margin: 0 auto 15px; /* O "0 auto" centraliza horizontalmente */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); /* Toque de profundidade */
+}
+
+.login-header h3 { 
+    color: #0c1e34; 
+    margin: 0; 
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.login-header p { 
+    font-size: 0.85rem; 
+    color: #64748b; 
+    margin-top: 5px;
+}
+
+/* Campos de Entrada */
+.input-group { 
+    text-align: left; 
+    margin-bottom: 20px; 
+}
+
+.input-group label { 
+    display: block; 
+    font-size: 0.8rem; 
+    font-weight: 700; 
+    margin-bottom: 8px; 
+    color: #1a4a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input { 
+    width: 100%; 
+    padding: 14px; 
+    border: 2px solid #f1f4f6; 
+    border-radius: 12px; 
+    font-size: 1rem;
+    outline: none; 
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+.input-group input:focus { 
+    border-color: #ff9f43; 
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 159, 67, 0.1);
+}
+
+.btn-login-submit {
+    width: 100%; 
+    background: #0c1e34; 
+    color: white; 
+    padding: 15px;
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 700; 
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-login-submit:hover { 
+    background: #ff9f43; 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 159, 67, 0.3);
+}
+
+.close-modal {
+    position: absolute; 
+    right: 25px; 
+    top: 20px; 
+    font-size: 32px;
+    font-weight: 300; 
+    color: #cbd5e1; 
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover { color: #ef4444; }
+
+.error-msg { 
+    color: #e74c3c; 
+    font-size: 0.85rem; 
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   14. WHATSAPP FLUTUANTE - COM ANIMAÇÃO DE ATENÇÃO
+   ========================================================================== */
+
+.whatsapp-flutuante {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; 
+    color: #FFF !important;
+    border-radius: 50%; /* Perfeitamente circular */
+    text-align: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-flutuante:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    animation: none;
+}
+
+/* Tooltip - Apenas visível no Desktop */
+.tooltip-whatsapp {
+    position: absolute;
+    right: 75px;
+    background-color: #0c1e34;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    pointer-events: none;
+}
+
+.tooltip-whatsapp::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #0c1e34;
+}
+
+.whatsapp-flutuante:hover .tooltip-whatsapp {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-5px);
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   17. RODAPÉ (FOOTER) - DESIGN FINAL INSTITUCIONAL
+   ========================================================================== */
+
+.main-footer {
+    position: relative;
+    background-color: #1a4a7a !important; 
+    color: #ffffff;
+    padding: 70px 0 25px;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Imagem de fundo com efeito Overlay */
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../assets/estatisticas-bg.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12; 
+    filter: grayscale(100%);
+    z-index: 0;
+}
+
+.footer-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Ajuste para 5 colunas com melhor distribuição de espaço */
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1.2fr; 
+    gap: 30px;
+    padding: 0 25px;
+    align-items: start;
+}
+
+/* LOGO BRANCO E REINVENTADO */
+.footer-logo {
+    max-width: 85px !important;
+    filter: brightness(0) invert(1) !important;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-col h4 {
+    color: #ff9f43 !important; 
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-content p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 8px;
+}
+
+/* REDES SOCIAIS */
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px; /* Quadrados arredondados para um ar mais moderno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-social a:hover {
+    background: #ff9f43;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 159, 67, 0.4);
+}
+
+/* LINHA FINAL */
+.footer-bottom {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+}
+
+
+
+
+
+
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+.news-hero {
+        padding-top: 140px !important; /* Espaço maior para a Nav Mobile (image_01de79.png) */
+        min-height: 70vh;
+    }
+
+    .navbar-container { 
+        height: 80px; /* Define uma altura clara para o topo */
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #ffffff;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+    }
+.brand-text {
+        max-width: 150px; /* Limita a largura para evitar empurrar ícones */
+        line-height: 1.0; /* Aproxima ainda mais as linhas */
+    }
+.maternidade-txt {
+        font-size: 7.5px !important; /* Tamanho mínimo para legibilidade */
+        letter-spacing: 0.5px;
+        white-space: nowrap; /* Impede que o texto quebre em 3 linhas */
+    }
+.jamba-txt {
+        font-size: 14px !important; /* Tamanho otimizado para mobile */
+        margin-top: 0px;
+        letter-spacing: -0.2px; /* Aproxima as letras para ganhar espaço */
+    }
+    
+ .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 80px 30px;
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 9999;
+    }
+
+    .nav-links.active { right: 0; } /* Mostra menu */
+
+    .nav-links li { margin-bottom: 25px; }
+    .nav-links a { font-size: 18px; color: #0c1e34; }
+
+    /* Movemos o cadeado para dentro do menu ou ajustamos na barra */
+    .nav-actions { margin-right: 15px; }
+    
+    /* Ícone Hambúrguer Moderno */
+    .menu-icon {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #0c1e34;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+
+
+
+
+
+
+/* 1. HERO SECTION MOBILE */
+    .news-hero {
+        padding-top: 140px !important; 
+        min-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .news-hero-overlay {
+        background: linear-gradient(180deg, 
+            rgba(12, 30, 52, 0.9) 0%, 
+            rgba(12, 30, 52, 0.7) 100%) !important;
+    }
+
+    .news-hero .news-title {
+        font-size: 1.6rem !important;
+        padding: 0 15px;
+        text-align: center;
+        line-height: 1.3;
+    }
+
+    .news-hero-content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .news-subtitle {
+        margin-top: 15px;
+        font-size: 1rem !important;
+        padding: 0 20px;
+        text-align: center;
+    }
+
+    /* 2. BOTÃO LER NOTÍCIA */
+    .hero-btn-noticia {
+        padding: 14px 30px;
+        width: 100%;
+        max-width: 280px;
+        font-size: 13px;
+        margin-bottom: 30px;
+    }
+
+    /* 3. CONTAINER BRANCO */
+    .news-main-container {
+        width: 100%;
+        margin: 0;
+        padding: 40px 20px; /* Equilíbrio para não colar o texto nas bordas */
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* 4. META INFO */
+    .meta-info {
+        flex-direction: column;
+        gap: 10px;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+    }
+
+    /* 5. TEXTO DA NOTÍCIA E TÍTULOS */
+    .news-body {
+        text-align: justify !important; /* Força a justificação solicitada */
+        hyphens: auto !important;      /* Essencial para não criar espaços vazios no mobile */
+        -webkit-hyphens: auto;
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    .news-body h2, .news-body h3 {
+        text-align: left; /* Títulos justificados costumam gerar erros visuais graves */
+        hyphens: none;
+    }
+
+    .news-body p {
+        text-align: justify !important;
+        margin-bottom: 20px;
+    }
+
+    
+
+    .lead-text {
+        text-align: justify !important;
+        hyphens: auto !important;
+    }
+
+    /* 6. IMAGENS E CITAÇÕES */
+    .main-img {
+        max-height: 320px;
+        border-radius: 15px;
+        object-fit: cover; /* No mobile o cover preenche melhor o ecrã */
+    }
+
+    .img-caption {
+        font-size: 0.75rem;
+        padding: 0 10px;
+        line-height: 1.4;
+    }
+
+    .quote-container {
+        margin: 35px 0;
+        padding: 25px 20px;
+        border-radius: 20px;
+        border-left-width: 4px;
+    }
+
+    .human-quote {
+        text-align: justify !important;
+        hyphens: auto !important;
+        font-size: 1rem;
+    }
+
+    /* 7. GALERIA (COLUNA ÚNICA) */
+    .gallery-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .gallery-item {
+        height: 220px;
+        border-radius: 15px;
+    }
+
+    /* 8. BOTÃO VOLTAR */
+    .container-central {
+        margin: 40px 0;
+        padding: 0 20px;
+    }
+
+    .btn-voltar-noticias {
+        width: 100%;
+        justify-content: center;
+        padding: 16px;
+    }
+
+    /* 9. ASSINATURA */
+    .signature-block {
+        text-align: left; /* Alinhamento à esquerda facilita leitura no telemóvel */
+        margin-top: 25px;
+    }
+
+    .author-name {
+        font-size: 1rem !important;
+    }
+
+
+
+
+    /* RODAPE */
+    .main-footer {
+        padding: 50px 0 20px;
+        text-align: center; /* Centraliza textos para melhor estética mobile */
+    }
+
+    .footer-container {
+        /* Transforma as 5 colunas numa lista vertical única */
+        grid-template-columns: 1fr !important; 
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    /* Centralização dos Elementos */
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        max-width: 100px !important; /* Ligeiramente maior no mobile para destaque */
+        margin: 0 auto 15px;
+    }
+
+    /* Títulos das Colunas no Mobile */
+    .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Linha decorativa centralizada sob o título */
+    .footer-col h4::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 2px;
+        background: #ff9f43;
+    }
+
+    .footer-content p {
+        font-size: 0.9rem;
+        max-width: 300px; /* Evita que o texto estique demasiado */
+        margin: 0 auto 10px;
+    }
+
+    /* Redes Sociais Centralizadas */
+    .footer-social {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-social a {
+        width: 40px; /* Botões ligeiramente maiores para toque (Touch Friendly) */
+        height: 40px;
+    }
+
+    /* Linha Final de Copyright */
+    .footer-bottom {
+        margin-top: 40px;
+        padding: 20px 10px 0;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+
+
+/* BOTÃO WHATSAPP */
+.whatsapp-flutuante {
+        width: 50px;
+        height: 50px;
+        bottom: 20px; /* Mais próximo da borda inferior */
+        right: 20px;  /* Mais próximo da borda lateral */
+        font-size: 26px;
+    }
+
+    /* Esconde a tooltip no mobile para não atrapalhar o toque */
+    .tooltip-whatsapp {
+        display: none !important;
+    }
+    
+    /* Pulsação mais discreta no mobile para poupar bateria/processamento */
+    @keyframes pulse-whatsapp {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+        70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+
+
+
+/* HERO */
+    .news-hero {
+        height: 60vh;
+    }
+
+    .news-title {
+        font-size: 28px; /* Título menor para ecrãs pequenos */
+    }
+
+    .news-subtitle {
+        font-size: 16px;
+    }
+
+
+
+/* NOTICIAS */
+    .news-title { font-size: 1.8rem; }
+    .news-body p { font-size: 1rem; }
+
+
+
+
+}

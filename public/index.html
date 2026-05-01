@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maternidade Teresa Luami Jamba</title>
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Fontes e Ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Bibliotecas Externas (CSS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- O Lightbox2 CSS deve estar aqui para a moldura e transparência funcionarem -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Seu Estilo Personalizado (Sempre por último para poder sobrescrever os outros se necessário) -->
+    <link rel="stylesheet" href="style.css?v=3.0">
+</head>
+<body>
+
+
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#inicio" class="logo">
+            <img src="assets/jamba.png" class="logo-img" alt="Logo">
+            <div class="brand-text">
+                <span class="maternidade-txt">Maternidade Provincial</span>
+                <span class="jamba-txt">Teresa Jamba</span>
+            </div>
+        </a>
+
+        <div class="nav-right-group">
+            <ul class="nav-links" id="menuList">
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#aniversariantes">Aniversários</a></li>
+                <li><a href="#noticias">Notícias</a></li>
+                <li><a href="#contact-info">Contactos</a></li>
+            </ul>
+
+            <div class="nav-actions">
+    
+    
+    <a href="javascript:void(0)" onclick="openAdminModal()" class="btn-action-pro btn-lock" title="Área Restrita">
+        <i class="fa-solid fa-lock"></i>
+    </a>
+
+
+</div>
+
+            <div class="menu-icon" id="mobile-icon" onclick="toggleMenu(event)">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+<section id="inicio" class="hero-screen">
+    <div class="screen-slides">
+        <div id="slide-div-1" class="my-slide active"></div>
+        <div id="slide-div-2" class="my-slide"></div>
+        <div id="slide-div-3" class="my-slide"></div>
+    </div>
+    <div class="screen-overlay"></div>
+</section>
+
+
+
+
+
+<div id="banner-aviso" style="display:none; background: #fff3cd; color: #856404; padding: 15px; text-align: center; border-bottom: 2px solid #ffeeba; font-weight: bold;">
+    <span id="texto-do-aviso"></span>
+</div>
+
+
+
+
+<section class="quem-somos" id="quem-somos" style="padding: 80px 0; background-color: #ffffff;">
+    <div class="container">
+        
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 class="titulo-igual" style="text-size-adjust: none; font-size: 2.2rem; color: #003366; text-transform: uppercase; margin-bottom: 10px;">Quem Somos</h2>
+            <div style="width: 80px; height: 4px; background: #f39c12; margin: 0 auto;"></div>
+        </div>
+        
+        <div class="about-intro" style="text-align: justify; max-width: 1000px; margin: 0 auto 60px auto; line-height: 1.8; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+            <p style="font-size: 1.1rem; color: #444; margin-bottom: 25px;">
+                A <strong>Maternidade Provincial do Moxico Teresa Luami Jamba</strong> é um estabelecimento público de saúde da rede hospitalar de referência provincial, integrado no Serviço Nacional de Saúde. A nossa instituição dedica-se à prestação de assistência médica e medicamentosa, bem como a cuidados de enfermagem especializados, focados na promoção da saúde e prevenção da doença para toda a população.
+            </p>
+            
+            <p style="font-size: 1.1rem; color: #444; border-left: 4px solid #007bff; padding-left: 20px; font-style: italic; background: #f8f9fa; padding: 20px;">
+                Dotada de autonomia administrativa, financeira e patrimonial, a Maternidade atua com o compromisso de assegurar assistência diferenciada nas áreas de <strong>Pediatria, Cirurgia, Ginecologia e Obstetrícia</strong>. O nosso foco principal reside na redução da morbi-mortalidade materna e infantil, promovendo a formação contínua dos nossos técnicos e a investigação em saúde.
+            </p>
+        </div>
+
+        <div class="about-grid" style="display: flex; gap: 30px; flex-wrap: wrap; justify-content: center;">
+            
+            <div class="about-card card-missao" style="flex: 1; min-width: 300px; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s;">
+                <div class="card-icon" style="font-size: 3rem; margin-bottom: 15px;">🎯</div>
+                <h3 class="titulo-igual" style="color: #003366; margin-bottom: 15px;">Missão</h3>
+                <p id="p-missao" style="color: #666; font-size: 1rem;">
+                    Garantir o atendimento humanizado e especializado à população por meio de serviços preventivos e curativos, com equipas multidisciplinares e alta tecnologia.
+                </p>
+            </div>
+
+            <div class="about-card card-visao" style="flex: 1; min-width: 300px; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; transition: transform 0.3s;">
+                <div class="card-icon" style="font-size: 3rem; margin-bottom: 15px;">👁️</div>
+                <h3 class="titulo-igual" style="color: #003366; margin-bottom: 15px;">Visão</h3>
+                <p id="p-visao" style="color: #666; font-size: 1rem;">
+                    Ser a referência provincial em saúde integral, consolidando-se como um centro de excelência no ensino, na investigação e na prestação de cuidados materno-infantis.
+                </p>
+            </div>
+
+            <div class="about-card card-valores" style="flex: 1; min-width: 300px; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); background-color: #f0fff4; border: 1px solid #c6f6d5;">
+                <div class="card-icon" style="font-size: 3rem; margin-bottom: 15px; text-align: center;">💎</div>
+                <h3 class="titulo-igual" style="color: #22543d; margin-bottom: 15px; text-align: center;">VALORES</h3>
+                <ul id="p-valores" style="list-style: none; padding: 0; color: #276749; font-size: 0.95rem; line-height: 2;">
+                    <li><i class="fas fa-check-circle" style="margin-right: 8px; color: #38a169;"></i> Qualidade e segurança;</li>
+                    <li><i class="fas fa-check-circle" style="margin-right: 8px; color: #38a169;"></i> Ética e deontologia;</li>
+                    <li><i class="fas fa-check-circle" style="margin-right: 8px; color: #38a169;"></i> Respeito e humanização;</li>
+                    <li><i class="fas fa-check-circle" style="margin-right: 8px; color: #38a169;"></i> Trabalho em equipa.</li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+
+<section id="servicos" class="services-section">
+    <div class="container">
+        
+        <div class="section-header">
+            <span class="subtitle">EXCELÊNCIA MÉDICA</span>
+            <h2>Nossos Serviços</h2>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="services-grid">
+            
+            <div class="service-card" id="link-serv-1">
+                <div class="icon-circle">👶</div>
+                <h3 id="tit-serv-1">Centro Materno Infantil</h3>
+                <p id="desc-serv-1">Acompanhamento integral para a saúde da mãe e da criança.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-2">
+                <div class="icon-circle">📋</div>
+                <h3 id="tit-serv-2">Consultas Externas</h3>
+                <p id="desc-serv-2">Atendimento especializado em diversas áreas da saúde feminina.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-3">
+                <div class="icon-circle">🤱</div>
+                <h3 id="tit-serv-3">Partos</h3>
+                <p id="desc-serv-3">Assistência humanizada e segura no momento do nascimento.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-4">
+                <div class="icon-circle">🍼</div>
+                <h3 id="tit-serv-4">Neonatologia</h3>
+                <p id="desc-serv-4">Cuidados intensivos e humanizados para recém-nascidos.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-5">
+                <div class="icon-circle">🚑</div>
+                <h3 id="tit-serv-5">Banco de Urgências</h3>
+                <p id="desc-serv-5">Atendimento médico imediato para casos críticos 24h/dia.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-6">
+                <div class="icon-circle">💊</div>
+                <h3 id="tit-serv-6">Farmácia</h3>
+                <p id="desc-serv-6">Disponibilidade de medicamentos essenciais para pacientes.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-7">
+                <div class="icon-circle">🛌</div>
+                <h3 id="tit-serv-7">UCI</h3>
+                <p id="desc-serv-7">Monitorização contínua para casos de alta complexidade.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-8">
+                <div class="icon-circle">🩸</div>
+                <h3 id="tit-serv-8">Hemoterápia</h3>
+                <p id="desc-serv-8">Serviços de transfusão e cuidados com o sangue.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-9">
+                <div class="icon-circle">🏥</div>
+                <h3 id="tit-serv-9">Bloco Operatório</h3>
+                <p id="desc-serv-9">Cirurgias obstétricas com tecnologia de ponta.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-10">
+                <div class="icon-circle">🧼</div>
+                <h3 id="tit-serv-10">Esterilização</h3>
+                <p id="desc-serv-10">Controlo rigoroso de higiene e segurança de materiais.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-11">
+                <div class="icon-circle">🔬</div>
+                <h3 id="tit-serv-11">Laboratório</h3>
+                <p id="desc-serv-11">Análises clínicas para diagnósticos rápidos e precisos.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-12">
+                <div class="icon-circle">✂️</div>
+                <h3 id="tit-serv-12">Cirurgia</h3>
+                <p id="desc-serv-12">Procedimentos cirúrgicos ginecológicos especializados.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-13">
+                <div class="icon-circle">🤱</div>
+                <h3 id="tit-serv-13">Obstetrícia</h3>
+                <p id="desc-serv-13">Acompanhamento pré-natal completo e partos seguros.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-14">
+                <div class="icon-circle">🩺</div>
+                <h3 id="tit-serv-14">Ginecologia</h3>
+                <p id="desc-serv-14">Prevenção e tratamento da saúde reprodutiva feminina.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-15">
+                <div class="icon-circle">🤱</div>
+                <h3 id="tit-serv-15">Puerpério</h3>
+                <p id="desc-serv-15">Cuidados especializados no pós-parto para mãe e bebé.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-16">
+                <div class="icon-circle">🤝</div>
+                <h3 id="tit-serv-16">Gabinete do Utente</h3>
+                <p id="desc-serv-16">Apoio, sugestões e esclarecimentos aos nossos pacientes.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-17">
+                <div class="icon-circle">🧠</div>
+                <h3 id="tit-serv-17">Serviços Psicológicos</h3>
+                <p id="desc-serv-17">Apoio emocional e saúde mental materna e infantil.</p>
+            </div>
+
+            <div class="service-card" id="link-serv-18">
+                <div class="icon-circle">📷</div>
+                <h3 id="tit-serv-18">Imagiologia</h3>
+                <p id="desc-serv-18">Ecografias e exames de imagem de alta resolução.</p>
+            </div>
+
+        </div> 
+    </div> 
+</section>
+
+
+
+
+
+<section class="cta-agendamento">
+    <div class="cta-content">
+        <div class="cta-text">
+            <h2>Precisa de uma consulta especializada?</h2>
+            <p>Agende o seu atendimento online na Maternidade Teresa Jamba de forma rápida e segura. Evite filas e garanta o seu lugar.</p>
+        </div>
+        <div class="cta-button-area">
+    <a href="agendar-consultas.html" class="btn-agendar-main">
+        <i class="fas fa-calendar-check"></i> AGENDAR AGORA
+    </a>
+</div>
+    </div>
+</section>
+
+
+
+
+    <section id="biografia" class="bio-section">
+    <div class="container bio-container">
+        
+        <div class="bio-image">
+            <div class="bio-placeholder">
+                <img src="assets/teresa-luami.png" alt="Teresa Luami Jamba">
+            </div>
+        </div>
+        
+        <div class="bio-text">
+            <span class="sub-homenagem">Homenagem</span>
+            <h2>Quem foi Teresa Luami Jamba?</h2>
+            <p>
+                Teresa Luami Jamba foi uma figura emblemática e dedicada à causa do bem-estar social e da saúde na província do Moxico. Sua trajetória foi marcada pelo compromisso inabalável com o cuidado das famílias angolanas.
+            </p>
+            <p>
+                A escolha do seu nome para esta Maternidade Provincial não é apenas uma homenagem, mas um compromisso de perpetuar o seu legado de humanização, força e dedicação ao próximo.
+            </p>
+            <div class="bio-quote">
+                "Um legado de amor e dedicação à vida no coração do Moxico."
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    
+
+
+
+
+<section id="canal-institucional" class="video-hero-section">
+    <div class="video-bg-overlay"></div>
+    
+    <div class="container video-content-wrapper">
+        <div class="video-text-side">
+            <span class="badge-live">Canal Teresa Jamba</span>
+            <h2 id="video-dynamic-title">Conheça a Nossa Maternidade</h2>
+            <p id="video-dynamic-desc">Siga as nossas atividades diárias, dicas de saúde e mensagens da nossa equipa de especialistas diretamente de Luena.</p>
+            
+            <div class="video-controls-info">
+                <span class="control-tag"><i class="fas fa-play-circle"></i> Reprodução Automática</span>
+                <span class="control-tag"><i class="fas fa-hospital"></i> Moxico em Foco</span>
+            </div>
+        </div>
+
+        <div class="video-player-side">
+            <div class="player-container">
+         <iframe 
+    id="youtube-player" 
+    src="https://www.youtube-nocookie.com/embed/GEiJ0k_YABI?autoplay=1&mute=1&loop=1&playlist=GEiJ0k_YABI&rel=0&modestbranding=1" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen>
+</iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+           <section id="estatisticas" class="stats-section section-padding">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <h3 class="stat-number" id="stat-pacientes" data-target="500">0</h3>
+                <p class="stat-label">Média de Pacientes/Dia</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🛌</div>
+                <h3 class="stat-number" id="stat-camas" data-target="1000">0</h3>
+                <p class="stat-label">Camas Disponíveis</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">👨‍⚕️</div>
+                <h3 class="stat-number" id="stat-funcionarios" data-target="800">0</h3>
+                <p class="stat-label">Funcionários Qualificados</p>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <h3 class="stat-number" id="stat-consultas" data-target="20000">0</h3>
+                <p class="stat-label">Média Anual de Consultas</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section id="galeria" class="galeria-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="subtitle">GALERIA</span>
+            <h2>VEJA <span style="color: #c46b05;">A NOSSA GALERIA</span></h2>
+            <div class="divider"></div>
+        </div>
+        
+        
+        <div id="grid-galeria-publica" class="galeria-grid">
+    
+</div>
+    
+</div>
+        
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="destaque-funcionario" class="employee-month-section" style="padding: 60px 0; background-color: #f9f9f9;">
+    <div class="container">
+        <div class="employee-card-wrapper">
+            
+            <div class="employee-content">
+                <span class="badge-month">Destaque do Mês</span>
+                <h2 class="section-title">Reconhecimento & Excelência</h2>
+                <div class="divider-left"></div>
+                
+                <p class="employee-quote" id="func-frase">
+                    "Carregando mensagem de reconhecimento..."
+                </p>
+                
+                <div class="employee-details">
+                    <h3 class="employee-name" id="func-nome">A carregar...</h3>
+                    <p class="employee-role" id="func-cargo"></p>
+                </div>
+            </div>
+
+            <div class="employee-image-area">
+                <div class="photo-frame">
+                    <img src="https://ui-avatars.com/api/?name=Maternidade+TJ&background=007bff&color=fff" id="func-foto" alt="Funcionário do Mês">
+                    
+                    <div class="award-icon" title="Prémio de Excelência">🏆</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section id="aniversariantes" class="birthday-section">
+    <div class="container">
+        <div class="section-header-compact">
+            <span class="badge-party">🎉 Aniversariantes do Dia</span>
+            <h2>Celebrando a Vida na Nossa Maternidade</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="birthday-grid" id="grid-aniversariantes">
+            </div>
+    </div>
+</section>
+
+
+
+
+
+<section id="noticias" class="news-section">
+    <div class="container">
+        <div class="section-header" style="text-align: center; margin-bottom: 40px;">
+            <span class="subtitle" style="color: #ff9f43; font-weight: 600;">FIQUE ATUALIZADO</span>
+            <h2 style="font-size: 2.5rem; color: #0c1e34;">Últimas Notícias</h2>
+            <div class="divider" style="width: 60px; height: 3px; background: #ff9f43; margin: 10px auto;"></div>
+        </div>
+
+        <div class="news-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px;">
+            
+            <article class="news-card">
+                <div class="news-thumb">
+                    <img id="img-not-1" src="assets/alan.jpg" alt="Notícia 1">
+                    <span class="news-date" id="data-not-1">07 Abr</span>
+                </div>
+                <div class="news-info">
+                    <span class="category" id="cat-not-1" style="color: #ff9f43; font-size: 0.8rem; font-weight: 700;">FORMAÇÃO</span>
+                    <h4 id="tit-not-1">O Funcionário Alan Mbango, foi distinguido como melhor estudante no Brasil.</h4>
+                    <p id="res-not-1">Iniciou esta semana a nova fase de vacinação para recém-nascidos e gestantes na nossa unidade...</p>
+                    <a id="link-not-1" href="noticias/noticia1.html" class="news-link">Ler notícia →</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-thumb">
+                    <img id="img-not-2" src="assets/noticia2.jpg" alt="Notícia 2">
+                    <span class="news-date" id="data-not-2">10 Out</span>
+                </div>
+                <div class="news-info">
+                    <span class="category" id="cat-not-2" style="color: #ff9f43; font-size: 0.8rem; font-weight: 700;">TECNOLOGIA</span>
+                    <h4 id="tit-not-2">Novos Equipamentos de Ecografia de Alta Resolução</h4>
+                    <p id="res-not-2">A maternidade recebeu novos aparelhos que permitirão diagnósticos pré-natais ainda mais precisos...</p>
+                    <a id="link-not-2" href="noticias/noticia2.html" class="news-link">Ler notícia →</a>
+                </div>
+            </article>
+
+            <article class="news-card">
+                <div class="news-thumb">
+                    <img id="img-not-3" src="assets/noticia3.jpeg" alt="Notícia 3">
+                    <span class="news-date" id="data-not-3">05 Out</span>
+                </div>
+                <div class="news-info">
+                    <span class="category" id="cat-not-3" style="color: #ff9f43; font-size: 0.8rem; font-weight: 700;">EQUIPA</span>
+                    <h4 id="tit-not-3">Formação em Atendimento Humanizado para Enfermeiros</h4>
+                    <p id="res-not-3">Nossa equipa participou de um workshop focado na humanização do parto e cuidado pós-operatório...</p>
+                    <a id="link-not-3" href="noticias/noticia3.html" class="news-link">Ler notícia →</a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="management-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="subtitle">DIRECTORES</span>
+            <h2>Conheça o nosso <span class="highlight">Corpo Directivo</span></h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="management-grid">
+            
+            <div class="director-card">
+                <div class="card-top">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="bio">Liderança estratégica focada na humanização hospitalar e excelência na gestão de saúde pública.</p>
+                </div>
+                <div class="director-info">
+                    <div class="image-container">
+                        <img src="assets/dg.jpg" alt="Directora Geral">
+                    </div>
+                    <div class="text">
+                        <h3>Drª Irondina Lúcia Júlio</h3>
+                        <p>Directora Geral</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="director-card">
+                <div class="card-top">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="bio">Coordena a assistência médica e técnica, assegurando o cumprimento dos protocolos clínicos e ética assistencial.</p>
+                </div>
+                <div class="director-info">
+                    <div class="image-container">
+                        <img src="assets/dc.jpg" alt="Director Clínico">
+                    </div>
+                    <div class="text">
+                        <h3>Dr. Assunção Marcos Wica</h3>
+                        <p>Director Clínico</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="director-card">
+                <div class="card-top">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="bio">Gestão eficiente de recursos financeiros e logística para o suporte pleno das actividades hospitalares.</p>
+                </div>
+                <div class="director-info">
+                    <div class="image-container">
+                        <img src="assets/da.jpg" alt="Director Administrativo">
+                    </div>
+                    <div class="text">
+                        <h3>Luís Domingos Mufenji</h3>
+                        <p>Director Administrativo</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="director-card">
+                <div class="card-top">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="bio">Supervisão do corpo de enfermagem, focada no cuidado contínuo e na segurança total do paciente.</p>
+                </div>
+                <div class="director-info">
+                    <div class="image-container">
+                        <img src="assets/de.jpg" alt="Directora de Enfermagem">
+                    </div>
+                    <div class="text">
+                        <h3>Maria Nazaré Lourenço</h3>
+                        <p>Directora de Enfermagem</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="director-card">
+                <div class="card-top">
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="bio">Gestão do conhecimento e fomento à investigação científica na área da saúde materno-infantil.</p>
+                </div>
+                <div class="director-info">
+                    <div class="image-container">
+                        <img src="assets/dcp.jpg" alt="Director Pedagógico">
+                    </div>
+                    <div class="text">
+                        <h3>Manuel Gil Sousa Cuanza</h3>
+                        <p>Director Científico e Pedagógico</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="map-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="subtitle">COMO CHEGAR</span>
+            <h2>Nossa Localização</h2>
+            <div class="divider"></div>
+        </div>
+        
+   <div class="map-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3876.1032549234834!2d19.864105175893043!3d-11.789282988424118!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1963c1e357572e55%3A0xcdf9b13f94e17cbc!2sMaternidade%20Provincial%20do%20Moxico!5e0!3m2!1spt-PT!2sao!4v1715000000000!5m2!1spt-PT!2sao" 
+        width="100%" 
+        height="450" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+        
+        <div class="address-footer">
+            <p><strong>📍 Endereço:</strong> Luena, Província do Moxico, Angola</p>
+            <p><strong>📞 Contacto:</strong> +244 941 333 565</p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<footer id="contact-info" class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-col logo-col">
+            <img src="assets/logo.png" alt="Logo Maternidade" class="footer-logo">
+        </div>
+
+        <div class="footer-col">
+            <h4><i class="fas fa-map-marker-alt"></i> Endereço</h4>
+            <div class="footer-content">
+                <p>Bairro Vila-Luso, Luena</p>
+                <p>Moxico - Angola</p>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4><i class="fas fa-phone"></i> Contactos</h4>
+            <div class="footer-content">
+                <p><strong>Tel:</strong> +244 941 333 565</p>
+                <p><strong>Email:</strong> rhmatprovmx@gmail.com</p>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4><i class="fas fa-clock"></i> Horários</h4>
+            <div class="footer-content">
+                <p><strong>Urgências:</strong> 24H/24H</p>
+                <p><strong>Visitas:</strong> 15:30 às 16:30</p>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Siga-nos</h4>
+            <div class="footer-social">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2026 Maternidade Provincial do Moxico Teresa Luami Jamba. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+    
+
+
+
+
+
+<div id="loginModal" class="modal-admin">
+    <div class="modal-content">
+        <span class="close-modal" onclick="fecharModal()">&times;</span>
+        <div class="login-header">
+    <img src="assets/logo.png" alt="Logótipo Maternidade Teresa Jamba" class="login-logo">
+    <h3>Acesso Restrito</h3>
+    <p>Painel de Gestão</p> </div>
+        <form id="loginForm" onsubmit="validarLogin(event)">
+            <div class="input-group">
+                <label>Utilizador</label>
+                <input type="text" id="username" placeholder="Digite seu nome de usuário" required>
+            </div>
+            <div class="input-group">
+                <label>Palavra-passe</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button type="submit" class="btn-login-submit">Entrar no Painel</button>
+        </form>
+        <p id="loginError" class="error-msg" style="display: none;">Credenciais incorretas!</p>
+    </div>
+</div>
+
+
+
+<script>
+
+// Verifica se a URL pede para abrir o login automaticamente
+window.addEventListener('DOMContentLoaded', (event) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('login') === 'restrito') {
+        // Chama a função que já criaste para abrir o modal
+        abrirModalAdmin();
+        
+        // Opcional: Limpa a URL para ficar "limpa" novamente
+        window.history.replaceState({}, document.title, "index.html");
+    }
+});
+
+
+
+
+
+
+
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".my-slide");
+
+    function showSlides() {
+        // Remove a classe 'active' de todas as imagens
+        slides.forEach(slide => {
+            slide.classList.remove("active");
+        });
+
+        slideIndex++;
+        
+        // Se chegar ao fim, volta para a primeira imagem
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        // Adiciona a classe 'active' na imagem atual
+        slides[slideIndex - 1].classList.add("active");
+
+        // Tempo de troca: 5000ms = 5 segundos
+        setTimeout(showSlides, 5000);
+    }
+
+    // Inicia a animação quando a página carrega
+    document.addEventListener("DOMContentLoaded", showSlides);
+</script>
+
+
+
+
+
+
+
+<script>
+    const menuList = document.getElementById("menuList");
+const mobileIcon = document.getElementById("mobile-icon");
+
+function toggleMenu(event) {
+    if (event) event.stopPropagation(); // ISSO É O QUE FALTAVA
+    menuList.classList.toggle("active");
+}
+
+// Fecha ao clicar fora
+document.addEventListener('click', (e) => {
+    if (menuList.classList.contains('active')) {
+        if (!menuList.contains(e.target) && !mobileIcon.contains(e.target)) {
+            menuList.classList.remove('active');
+        }
+    }
+});
+
+// Fecha ao clicar num link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        menuList.classList.remove('active');
+    });
+});
+</script>
+
+
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
+<script>
+    const aparecerCards = () => {
+        const cards = document.querySelectorAll('.service-card-link');
+        const triggerPoint = window.innerHeight * 0.85;
+
+        cards.forEach((card, index) => {
+            const cardTop = card.getBoundingClientRect().top;
+
+            if (cardTop < triggerPoint) {
+                // Efeito cascata: cada card demora +150ms que o anterior
+                setTimeout(() => {
+                    card.classList.add('appear');
+                }, index * 150);
+            }
+        });
+    };
+
+    // Executa ao carregar, ao rodar a página e ao redimensionar
+    window.addEventListener('scroll', aparecerCards);
+    window.addEventListener('load', aparecerCards);
+    window.addEventListener('resize', aparecerCards);
+    
+    // Execução imediata para cards que já estão visíveis no topo
+    setTimeout(aparecerCards, 300);
+
+</script>
+
+
+
+
+
+
+
+
+<a href="https://wa.me/2449XXXXXXXXX" class="whatsapp-flutuante" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+    <span class="tooltip-whatsapp">Fale Connosco</span>
+</a>
+
+
+
+
+
+
+<script>
+    // --- 1. FUNÇÃO PARA AS IMAGENS (HERO SCREEN) ---
+    async function carregarHero() {
+        for (let i = 1; i <= 3; i++) {
+            try {
+                const res = await fetch(`http://localhost:5000/api/config/slide${i}`);
+                const data = await res.json();
+                if (data && data.valor) {
+                    const elemento = document.getElementById(`slide-div-${i}`);
+                    if (elemento) {
+                        elemento.style.backgroundImage = `url('${data.valor}')`;
+                        console.log(`✅ Slide ${i} atualizado.`);
+                    }
+                }
+            } catch (err) {
+                console.log(`Slide ${i} não configurado.`);
+            }
+        }
+    }
+
+    
+
+
+// ESTATISTICAS
+async function carregarEstatisticas() {
+    const stats = [
+        { chave: 'stat_pacientes', id: 'stat-pacientes' },
+        { chave: 'stat_camas', id: 'stat-camas' },
+        { chave: 'stat_funcionarios', id: 'stat-funcionarios' },
+        { chave: 'stat_consultas', id: 'stat-consultas' }
+    ];
+
+    for (const s of stats) {
+        try {
+            const res = await fetch(`http://localhost:5000/api/config/${s.chave}`);
+            const data = await res.json();
+            
+            if (data && data.valor) {
+                const elemento = document.getElementById(s.id);
+                if (elemento) {
+                    // --- O AJUSTE DE FORMATAÇÃO ENTRA AQUI ---
+                    const numeroFormatado = Number(data.valor).toLocaleString('pt-PT');
+                    
+                    elemento.innerText = numeroFormatado; 
+                    elemento.setAttribute('data-target', data.valor);
+                    
+                    console.log(`✅ Estatística ${s.chave} carregada: ${numeroFormatado}`);
+                }
+            }
+        } catch (err) {
+            console.log(`Erro ao carregar estatística: ${s.chave}`);
+        }
+    }
+}
+
+
+
+
+
+
+
+    // --- 3. FUNÇÃO PARA AS DICAS MÉDICAS (CARTÕES) ---
+    async function carregarDicasCompletas() {
+        for (let i = 1; i <= 3; i++) {
+            try {
+                const res = await fetch(`http://localhost:5000/api/config/dica_completa_${i}`);
+                const data = await res.json();
+                if (data && data.valor) {
+                    const info = JSON.parse(data.valor);
+                    const img = document.getElementById(`img-dica-${i}`);
+                    const sec = document.getElementById(`txt-sec-${i}`);
+                    const tit = document.getElementById(`txt-tit-${i}`);
+                    const corpo = document.getElementById(`txt-corpo-${i}`);
+
+                    if(img) img.src = info.img;
+                    if(sec) sec.innerText = info.seccao;
+                    if(tit) tit.innerText = info.titulo;
+                    if(corpo) corpo.innerText = info.corpo;
+                    console.log(`✅ Dica ${i} carregada.`);
+                }
+            } catch (err) {
+                console.log(`Dica ${i} não configurada.`);
+            }
+        }
+    }
+
+
+
+
+
+
+// GALERIA
+async function carregarGaleria() {
+    const container = document.getElementById('grid-galeria-publica');
+    if (!container) return;
+
+    // Limpa o container para começar a carregar
+    container.innerHTML = "";
+
+    // Loop de 1 a 16 seguindo o padrão das estatísticas
+    for (let i = 1; i <= 16; i++) {
+        const chave = `galeria_item_${i}`;
+        
+        try {
+            // Pede a chave individualmente como nas outras secções
+            const res = await fetch(`http://localhost:5000/api/config/${chave}`);
+            const data = await res.json();
+            
+            if (data && data.valor) {
+                // Converte o texto JSON em objeto (URL e Legenda)
+                const info = JSON.parse(data.valor);
+                
+                // Constrói o HTML e adiciona ao container
+                const itemHTML = `
+                    <a href="${info.url}" class="galeria-item" data-lightbox="hospital-gallery" data-title="${info.legenda}">
+                        <img src="${info.url}" alt="${info.legenda}">
+                        <div class="galeria-overlay">
+                            <span>${info.legenda}</span>
+                        </div>
+                    </a>
+                `;
+                
+                container.innerHTML += itemHTML;
+                console.log(`✅ Item ${chave} da galeria carregado.`);
+            }
+        } catch (err) {
+            console.log(`Erro ao carregar item da galeria: ${chave}`);
+        }
+    }
+
+    // Reinicializa o Lightbox se ele existir para as novas imagens funcionarem
+    if (typeof lightbox !== 'undefined') {
+        lightbox.init();
+    }
+}
+
+// Garante que a função está disponível para o window.onload
+window.carregarGaleria = carregarGaleria;
+
+
+
+
+// CONTAGEM ESTATISTICAS
+function iniciarAnimacaoContagem() {
+    const seccaoEstatisticas = document.querySelector('#estatisticas');
+    const contadores = document.querySelectorAll('.stat-number');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Quando a secção aparece, animamos cada contador
+                contadores.forEach(contador => animarUmContador(contador));
+            } else {
+                // OPCIONAL: Quando a secção sai do ecrã, resetamos para 0
+                // Assim, ao voltar, a animação começa do início novamente
+                contadores.forEach(contador => {
+                    contador.innerText = "0";
+                });
+            }
+        });
+    }, { threshold: 0.2 }); // Dispara quando 20% da secção aparece
+
+    observer.observe(seccaoEstatisticas);
+}
+
+function animarUmContador(elemento) {
+    const alvo = parseInt(elemento.getAttribute('data-target')) || 0;
+    let contagemAtual = 0;
+    const duracao = 80; // Ajuste para ser um pouco mais rápido
+    const incremento = alvo / duracao;
+
+    const atualizar = () => {
+        contagemAtual += incremento;
+        if (contagemAtual < alvo) {
+            elemento.innerText = Math.ceil(contagemAtual).toLocaleString('pt-PT');
+            requestAnimationFrame(atualizar);
+        } else {
+            elemento.innerText = alvo.toLocaleString('pt-PT');
+        }
+    };
+    atualizar();
+}
+
+
+
+
+ // --- 4. O CORAÇÃO DO SITE: CARREGAMENTO INDEPENDENTE ---
+window.onload = async function() {
+    console.log("🚀 Iniciando carregamento total da Maternidade...");
+
+    // 1. Banner de Aviso (Independente)
+    fetch('http://localhost:5000/api/config/aviso_home')
+        .then(res => res.json())
+        .then(data => {
+            if (data && data.valor) {
+                const banner = document.getElementById('banner-aviso');
+                const texto = document.getElementById('texto-do-aviso');
+                if(banner) banner.style.display = 'block';
+                if(texto) texto.innerText = data.valor;
+            }
+        }).catch(() => console.log("Aviso inativo."));
+
+       // 3. Carregar as Secções (Sem 'await' para uma não travar a outra)
+    carregarGaleria(); 
+    carregarHero(); 
+    
+    carregarDicasCompletas();
+    carregarAniversariantes();
+
+    // 4. Estatísticas (Caso especial: precisa carregar antes de animar)
+    try {
+        await carregarEstatisticas(); // Espera os números chegarem
+        iniciarAnimacaoContagem();    // Só anima depois que os números estão no HTML
+    } catch (e) {
+        console.log("Erro ao carregar/animar estatísticas");
+    }
+
+    console.log("✨ Carregamento disparado! O site sincronizará cada parte assim que os dados chegarem.");
+};
+
+
+// FUNCIONARIO DO MES
+
+async function carregarFuncionario() {
+    try {
+        // No seu index.html, altere apenas esta linha:
+const res = await fetch('http://127.0.0.1:5000/api/config/funcionario_mes');
+        
+        // Verifica se a resposta foi bem-sucedida antes de prosseguir
+        if (!res.ok) throw new Error("Erro ao buscar dados do servidor");
+
+        const data = await res.json();
+        
+        if (data && data.valor) {
+            const func = JSON.parse(data.valor);
+            
+            // Verificação de segurança: Só altera se o elemento existir na página
+            const elNome = document.getElementById('func-nome');
+            const elCargo = document.getElementById('func-cargo');
+            const elFoto = document.getElementById('func-foto');
+            const elFrase = document.getElementById('func-frase');
+
+            if (elNome) elNome.innerText = func.nome;
+            if (elCargo) elCargo.innerText = func.cargo;
+            if (elFoto) elFoto.src = func.foto;
+            if (elFrase) elFrase.innerText = `"${func.frase}"`;
+            
+            console.log("✅ Dados do funcionário do mês aplicados.");
+        }
+    } catch (err) {
+        console.warn("Aviso: Usando dados padrão ou erro de conexão.", err.message);
+    }
+}
+
+// GARANTA QUE ESTA LINHA ESTEJA NO FIM DO SCRIPT
+// Ela faz a função rodar assim que o navegador terminar de ler o HTML
+document.addEventListener('DOMContentLoaded', carregarFuncionario);
+
+
+
+
+
+
+
+// ANIVERSARIANTES DO DIA
+
+async function carregarAniversariantes() {
+    const grid = document.getElementById('grid-aniversariantes');
+    
+    if (!grid) {
+        console.error("ERRO: O elemento 'grid-aniversariantes' não existe no HTML!");
+        return;
+    }
+
+    try {
+        const res = await fetch('http://localhost:5000/api/config/lista_aniversariantes');
+        const data = await res.json();
+
+        // LOG para vermos no Console (F12) o que está a chegar
+        console.log("DADOS DO BANCO:", data);
+
+        if (data && data.valor) {
+            const lista = JSON.parse(data.valor);
+            
+            if (lista.length === 0) {
+                grid.innerHTML = "<p style='color: gray;'>Nenhum aniversariante para hoje.</p>";
+                return;
+            }
+
+            grid.innerHTML = ""; // Limpa o grid
+
+            lista.forEach(pessoa => {
+                grid.innerHTML += `
+                    <div class="birthday-item" style="opacity: 1 !important; visibility: visible !important;">
+                        <div class="image-wrapper">
+                            <img src="${pessoa.foto}" alt="${pessoa.nome}" onerror="this.src='assets/default.jpg'">
+                        </div>
+                        <div class="info">
+                            <h3>${pessoa.nome}</h3>
+                            <p>${pessoa.cargo}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            console.log("HTML injetado com sucesso!");
+        }
+    } catch (err) {
+        console.error("ERRO NA REQUISIÇÃO:", err);
+        grid.innerHTML = "<p style='color: red;'>Erro ao carregar dados.</p>";
+    }
+}
+
+
+
+
+
+
+
+// NOTICIAS
+async function carregarNoticiasHome() {
+    const totalNoticias = 3;
+
+    for (let i = 1; i <= totalNoticias; i++) {
+        try {
+            // BUSCA NO IP 127.0.0.1 (Porta 5000 do Node.js)
+            const response = await fetch(`http://127.0.0.1:5000/api/config/noticia_home_${i}`);
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data && data.valor) {
+                    const noticia = JSON.parse(data.valor);
+
+                    // Atualiza os elementos no HTML
+                    document.getElementById(`img-not-${i}`).src = noticia.imagem || 'assets/default-news.jpg';
+                    document.getElementById(`data-not-${i}`).innerText = noticia.data || '-- --';
+                    document.getElementById(`cat-not-${i}`).innerText = noticia.categoria || 'GERAL';
+                    document.getElementById(`tit-not-${i}`).innerText = noticia.titulo;
+                    document.getElementById(`res-not-${i}`).innerText = noticia.resumo;
+                    document.getElementById(`link-not-${i}`).href = noticia.link || '#';
+                }
+            }
+        } catch (err) {
+            console.error(`Erro ao carregar notícia ${i}:`, err);
+        }
+    }
+}
+
+// Executa ao carregar a página
+window.addEventListener('load', carregarNoticiasHome);
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+<script>
+// Configuração do servidor
+const API_BASE_URL = 'http://127.0.0.1:5000/api/config';
+
+async function carregarDadosDoSite() {
+    console.log("Iniciando carregamento de dados...");
+
+    // 1. CARREGAR CORPO DIRETIVO
+    const diretores = ['dg', 'da', 'dc', 'de', 'dp'];
+    
+    for (const id of diretores) {
+        try {
+            const res = await fetch(`${API_BASE_URL}/diretor_${id}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.valor) {
+                    const d = JSON.parse(data.valor);
+                    
+                    // Atualiza Nome, Cargo e Foto
+                    if(document.getElementById(`nome_${id}`)) document.getElementById(`nome_${id}`).innerText = d.nome;
+                    if(document.getElementById(`cargo_${id}`)) document.getElementById(`cargo_${id}`).innerText = d.cargo;
+                    if(document.getElementById(`img_${id}`)) document.getElementById(`img_${id}`).src = d.foto;
+                    
+                    // Se for a Diretora Geral, atualiza também a bio
+                    if(id === 'dg' && document.getElementById(`bio_dg`)) {
+                        document.getElementById(`bio_dg`).innerText = d.bio;
+                    }
+                }
+            }
+        } catch (err) {
+            console.error(`Erro ao carregar diretor ${id}:`, err);
+        }
+    }
+
+    // 2. CARREGAR ÚLTIMAS NOTÍCIAS (As 3 posições)
+    for (let i = 1; i <= 3; i++) {
+        try {
+            const res = await fetch(`${API_BASE_URL}/noticia_home_${i}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.valor) {
+                    const n = JSON.parse(data.valor);
+                    
+                    // Atualiza os campos da notícia usando os IDs que criamos
+                    if(document.getElementById(`tit-not-${i}`)) document.getElementById(`tit-not-${i}`).innerText = n.titulo;
+                    if(document.getElementById(`res-not-${i}`)) document.getElementById(`res-not-${i}`).innerText = n.resumo;
+                    if(document.getElementById(`data-not-${i}`)) document.getElementById(`data-not-${i}`).innerText = n.data;
+                    if(document.getElementById(`cat-not-${i}`)) document.getElementById(`cat-not-${i}`).innerText = n.categoria;
+                    if(document.getElementById(`img-not-${i}`)) document.getElementById(`img-not-${i}`).src = n.imagem;
+                    if(document.getElementById(`link-not-${i}`)) document.getElementById(`link-not-${i}`).href = n.link;
+                }
+            }
+        } catch (err) {
+            console.error(`Erro ao carregar notícia ${i}:`, err);
+        }
+    }
+}
+
+// Executar assim que o navegador terminar de ler o HTML
+document.addEventListener('DOMContentLoaded', carregarDadosDoSite);
+</script>
+
+
+
+
+
+
+<script>
+        // Função para ABRIR o modal (Nome unificado para o botão da Navbar)
+function openAdminModal(event) {
+    if (event) event.preventDefault(); 
+    
+    const modal = document.getElementById('loginModal');
+    const menuList = document.getElementById('menuList'); // ID do seu menu mobile
+
+    if (modal) {
+        // 1. Abre o modal
+        modal.style.display = 'flex';
+        
+        // 2. Foca no campo de utilizador para ganhar tempo
+        setTimeout(() => {
+            document.getElementById('username').focus();
+        }, 100);
+
+        // 3. Bloqueia o scroll da página ao fundo
+        document.body.style.overflow = 'hidden';
+
+        // 4. Se o menu mobile estiver aberto, ele fecha automaticamente
+        if (menuList && menuList.classList.contains('active')) {
+            menuList.classList.remove('active');
+        }
+    } else {
+        console.error("Erro: Elemento 'loginModal' não encontrado no HTML.");
+    }
+}
+
+// Função para FECHAR o modal
+function fecharModal() {
+    const modal = document.getElementById('loginModal');
+    if (modal) {
+        modal.style.display = 'none';
+        
+        // 1. Limpa o formulário e erros para a próxima vez
+        document.getElementById('loginForm').reset();
+        document.getElementById('loginError').style.display = 'none';
+        
+        // 2. Devolve o scroll ao site
+        document.body.style.overflow = 'auto';
+    }
+}
+
+// Fechar se clicar fora da caixa branca (Overlay)
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('loginModal');
+    if (event.target === modal) {
+        fecharModal();
+    }
+});
+
+// Fechar com a tecla "Esc" para maior acessibilidade
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        fecharModal();
+    }
+});
+
+
+
+
+function validarLogin(event) {
+    // 1. Bloqueia o comportamento padrão do formulário (IMPEDIR REFRESH)
+    if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+    }
+
+    const user = document.getElementById('username').value.trim();
+    const pass = document.getElementById('password').value.trim();
+    const errorMsg = document.getElementById('loginError');
+    const btnSubmit = document.querySelector('.btn-login-submit');
+
+    // Credenciais
+    if (user === "menezes.silva" && pass === "Auzinho1442") {
+        
+        // 2. Feedback visual imediato
+        btnSubmit.disabled = true;
+        btnSubmit.innerText = "A autenticar...";
+        btnSubmit.style.background = "#28a745";
+
+        // 3. Grava a permissão
+        localStorage.setItem('adminLogado', 'true');
+        
+        console.log("Login correto. Redirecionando...");
+
+        // 4. Redirecionamento forçado
+        // Usamos o timeout para garantir que o localStorage seja gravado antes de sair
+        setTimeout(() => {
+            window.location.replace("admin.html"); 
+        }, 500);
+        
+        return false; // Garantia extra para navegadores antigos
+
+    } else {
+        // Erro
+        if (errorMsg) {
+            errorMsg.style.display = 'block';
+            errorMsg.innerText = "Utilizador ou Palavra-passe incorretos!";
+            setTimeout(() => { errorMsg.style.display = 'none'; }, 3000);
+        }
+        document.getElementById('password').value = "";
+        btnSubmit.innerText = "Entrar no Painel";
+    }
+}
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function changeVideo(id, title, desc) {
+    // Muda o vídeo no iframe
+    document.getElementById('main-video-frame').src = "https://www.youtube.com/embed/" + id + "?autoplay=1";
+    
+    // Atualiza textos
+    document.getElementById('main-video-title').innerText = title;
+    document.getElementById('main-video-desc').innerText = desc;
+    
+    // Atualiza classe active
+    const items = document.querySelectorAll('.playlist-item');
+    items.forEach(item => item.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+}
+</script>
+
+
+
+
+
+
+
+<!-- GALERIA -->
+<!-- 1. O jQuery deve vir ANTES de tudo (Ele é o motor do Lightbox) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- 2. Agora o script do Lightbox -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<!-- 3. Configuração da transparência e botões -->
+<script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,           /* Permite navegar em ciclo (Botões de avançar) */
+      'albumLabel': "Imagem %1 de %2",
+      'fadeDuration': 300,
+      'imageFadeDuration': 300,
+      'positionFromTop': 50,        /* Evita que a imagem fique muito colada ao topo */
+      'disableScrolling': true      /* Impede que o site role ao fundo enquanto a foto está aberta */
+    })
+</script>
+
+</body>
+</html>

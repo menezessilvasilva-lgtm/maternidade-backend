@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+
+<script>
+    (function() {
+        if (localStorage.getItem('adminLogado') !== 'true') {
+            // Adicionamos ?login=restrito ao final do endereço
+            window.location.replace("index.html?login=restrito");
+        }
+    })();
+</script>
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão - Maternidade Teresa Jamba</title>
+    <style>
+
+/* AJUSTE PARA TELEMÓVEL (Ecrãs até 768px) */
+@media (max-width: 768px) {
+    .employee-card-wrapper {
+        flex-direction: column-reverse; /* Coloca a imagem em cima e o texto em baixo */
+        text-align: center;            /* Centraliza o texto para ficar mais bonito */
+        padding: 20px;
+    }
+
+    .employee-image-area {
+        margin-bottom: 30px;           /* Dá espaço entre a foto e o texto */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .divider-left {
+        margin: 15px auto;             /* Centraliza a linha divisória */
+    }
+
+    .employee-month-section {
+        padding: 40px 0 !important;    /* Reduz um pouco o padding para não ocupar o ecrã todo */
+    }
+}
+
+
+
+
+
+
+/* 1. RESET TOTAL E PREPARAÇÃO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #1a252f;      /* Azul Escuro Profissional */
+    --secondary: #ff8c00;    /* Laranja Maternidade */
+    --accent: #28a745;       /* Verde Sucesso */
+    --bg-light: #f4f7f6;     /* Cinza Fundo */
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 2. NAVBAR BLINDADA (Corrige o Logo Gigante) */
+.admin-navbar {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* AQUI ESTÁ A SOLUÇÃO PARA O LOGO GIGANTE */
+.nav-logo {
+    height: 50px;       /* Altura fixa */
+    width: 50px;        /* Largura fixa */
+    object-fit: contain; /* Garante que a imagem não distorça */
+    background: white;   /* Fundo branco para destacar o logo circular */
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.brand-text h1 {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.brand-text span {
+    font-size: 0.75rem;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 3. BOTÕES DA NAVBAR */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-consultas {
+    background: var(--secondary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.btn-consultas:hover { background: #e67e00; transform: translateY(-2px); }
+
+.btn-logout {
+    color: var(--white);
+    text-decoration: none;
+    background: rgba(255,255,255,0.1);
+    padding: 8px 15px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+.btn-logout:hover { background: #e74c3c; }
+
+/* 4. ÁREA DE GESTÃO (CENTRALIZADA E LIMPA) */
+.admin-main {
+    flex: 1;
+    width: 100%;
+    max-width: 800px;  /* Largura elegante para formulários */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.admin-card {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-top: 5px solid var(--secondary); /* Detalhe de cor no topo */
+}
+
+.admin-header-inline {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* 5. FORMULÁRIOS PROFISSIONAIS */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--secondary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+}
+
+.btn-update {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-update:hover { background: #218838; }
+
+/* CHAVE DE ACESSO MASTER */
+.master-key-box {
+    background: #fff5f5;
+    border: 1px solid #feb2b2;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+
+    
+    </style>
+</head>
+<body>
+
+
+
+
+<nav class="admin-navbar">
+    <div class="nav-container">
+        <div class="nav-brand">
+            <img src="assets/favicon.png" alt="Logo" class="nav-logo">
+            <div class="brand-text">
+                <h1>Painel de Gestão</h1>
+                <span>Maternidade Teresa Luami Jamba</span>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <a href="painel.html" target="_blank" class="btn-consultas" style="text-decoration: none;">
+    <i class="fas fa-calendar-check"></i> Consultas Agendadas
+</a>
+            
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>Admin</span>
+            </div>
+
+            <a href="javascript:void(0)" onclick="encerrarSessao()" class="btn-logout" title="Terminar Sessão">
+    <i class="fas fa-sign-out-alt"></i> Sair
+</a>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="background-color: #f4f7f6; min-height: 100vh; padding: 40px 20px; box-sizing: border-box;">
+    
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+        
+    
+        <div style="background: #fff; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.1);">
+            <label style="font-weight: bold; color: #e74c3c; font-family: sans-serif; display: block;">🔑 CHAVE DE ACESSO MASTER:</label>
+            <input type="password" id="admin-senha-master" placeholder="Digite a senha para autorizar alterações" 
+                   style="width: 100%; padding: 12px; margin-top: 10px; border-radius: 5px; border: 1px solid #ddd; box-sizing: border-box; font-size: 16px;">
+            <p style="margin: 8px 0 0; color: #95a5a6; font-size: 12px; font-family: sans-serif;">* Necessária para validar qualquer alteração no sistema.</p>
+        </div>
+
+
+
+<div class="admin-card">
+    <h2>Gestão da Maternidade</h2>
+<hr>
+    <label>Mensagem de Aviso (Home):</label>
+    <textarea id="textoConfig" rows="2"></textarea>
+    <button onclick="salvarGenerico('aviso_home', 'textoConfig')" class="btn-info">Publicar Aviso</button>
+
+    
+<h3>Hero Screen</h3>
+   <label>Imagem Slide 1 (URL):</label>
+<input type="text" id="urlSlide1">
+<button onclick="salvarGenerico('slide1', 'urlSlide1')" class="btn-success">Atualizar Slide 1</button>
+
+<label>Imagem Slide 2 (URL):</label>
+<input type="text" id="urlSlide2">
+<button onclick="salvarGenerico('slide2', 'urlSlide2')" class="btn-success">Atualizar Slide 2</button>
+
+<label>Imagem Slide 3 (URL):</label>
+<input type="text" id="urlSlide3">
+<button onclick="salvarGenerico('slide3', 'urlSlide3')" class="btn-success">Atualizar Slide 3</button>
+
+    
+
+    
+
+
+
+
+
+
+<hr>
+<h3>Gestão de Estatísticas</h3>
+
+<div class="admin-section">
+    <label>Média de Pacientes/Dia:</label>
+    <input type="number" id="numPacientes" placeholder="Ex: 500">
+    <button onclick="salvarGenerico('stat_pacientes', 'numPacientes')" class="btn-success">Atualizar Pacientes</button>
+
+    <label>Camas Disponíveis:</label>
+    <input type="number" id="numCamas" placeholder="Ex: 1000">
+    <button onclick="salvarGenerico('stat_camas', 'numCamas')" class="btn-success">Atualizar Camas</button>
+
+    <label>Funcionários Qualificados:</label>
+    <input type="number" id="numFuncionarios" placeholder="Ex: 800">
+    <button onclick="salvarGenerico('stat_funcionarios', 'numFuncionarios')" class="btn-success">Atualizar Equipa</button>
+
+    <label>Média Anual de Consultas:</label>
+    <input type="number" id="numConsultas" placeholder="Ex: 1000000">
+    <button onclick="salvarGenerico('stat_consultas', 'numConsultas')" class="btn-success">Atualizar Consultas</button>
+</div>
+
+
+
+
+
+
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+    
+    <hr style="border: 0; border-top: 1px solid #eee; margin-bottom: 30px;">
+    
+    <div style="margin-bottom: 25px; border-left: 5px solid #28a745; padding-left: 15px;">
+        <h3 style="margin: 0; color: #333; font-size: 22px;">Gestão da Galeria (Instalações)</h3>
+        <p style="margin: 5px 0 0; color: #777; font-size: 14px;">Atualize as 16 fotos da Maternidade Teresa Jamba</p>
+    </div>
+
+    <!-- Grid de Administração -->
+    <div id="admin-galeria-grid" class="admin-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <!-- Os cards serão injetados aqui via JavaScript -->
+    </div>
+</div>
+
+
+<div style="background-color: #f4f7f6; min-height: 100vh; padding: 40px 20px; box-sizing: border-box;">
+    
+    <div style="max-width: 1000px; margin: 0 auto; display: flex; flex-direction: column; gap: 30px;">
+        
+        <h1 style="color: #333; margin: 0; font-family: sans-serif; font-weight: 600;">Painel de Gestão da Maternidade</h1>
+
+        <div style="background: white; border-radius: 12px; padding: 35px; box-shadow: 0 8px 24px rgba(0,0,0,0.06); border: 1px solid #e1e8e7; box-sizing: border-box;">
+            
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; padding-bottom: 20px;">
+                <span style="font-size: 32px;">🏆</span>
+                <div>
+                    <h3 style="margin: 0; color: #2c3e50; font-family: sans-serif;">Destaque do Mês</h3>
+                    <p style="margin: 5px 0 0; color: #7f8c8d; font-size: 14px; font-family: sans-serif;">Gerencie o reconhecimento dos colaboradores da Maternidade</p>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+                <div style="display: flex; flex-direction: column;">
+                    <label style="font-size: 11px; font-weight: bold; color: #34495e; margin-bottom: 8px; letter-spacing: 0.5px;">NOME COMPLETO</label>
+                    <input type="text" id="admin-func-nome" placeholder="Ex: Menezes Rocha" style="width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; box-sizing: border-box; outline-color: #28a745;">
+                </div>
+
+                <div style="display: flex; flex-direction: column;">
+                    <label style="font-size: 11px; font-weight: bold; color: #34495e; margin-bottom: 8px; letter-spacing: 0.5px;">CARGO / FUNÇÃO</label>
+                    <input type="text" id="admin-func-cargo" placeholder="Ex: Engenheiro Informático" style="width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; box-sizing: border-box; outline-color: #28a745;">
+                </div>
+
+                <div style="display: flex; flex-direction: column;">
+                    <label style="font-size: 11px; font-weight: bold; color: #34495e; margin-bottom: 8px; letter-spacing: 0.5px;">URL DA FOTO</label>
+                    <input type="text" id="admin-func-foto" placeholder="Ex: assets/melhor.jpg" style="width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; box-sizing: border-box; outline-color: #28a745;">
+                </div>
+
+                <div style="grid-column: 1 / -1; display: flex; flex-direction: column;">
+                    <label style="font-size: 11px; font-weight: bold; color: #34495e; margin-bottom: 8px; letter-spacing: 0.5px;">FRASE DE DESTAQUE</label>
+                    <textarea id="admin-func-frase" rows="3" placeholder="Escreva a frase de reconhecimento..." style="width: 100%; padding: 12px; border: 1px solid #cbd5e0; border-radius: 8px; font-size: 15px; font-family: sans-serif; box-sizing: border-box; resize: vertical; outline-color: #28a745;"></textarea>
+                </div>
+            </div>
+
+            <button onclick="salvarFuncionario()" style="width: 100%; margin-top: 30px; padding: 16px; background: #28a745; color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.2); font-family: sans-serif;">
+                💾 Salvar Alterações do Destaque
+            </button>
+        </div>
+
+        <div class="seccao-admin-aniversariantes" style="
+            background: white; 
+            border-radius: 12px; 
+            padding: 35px; 
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05); 
+            border: 1px solid #e1e8e7; 
+            box-sizing: border-box;">
+
+            <div style="border-left: 5px solid #e67e22; padding-left: 15px; margin-bottom: 25px;">
+                <h3 style="margin: 0; color: #2c3e50; font-size: 20px; font-family: sans-serif;">Gerir Aniversariantes do Dia 🎂</h3>
+                <p style="margin: 5px 0 0; color: #7f8c8d; font-size: 14px; font-family: sans-serif;">
+                    Insira os dados separados por uma barra vertical. Cada linha representa um cartão no site.
+                </p>
+            </div>
+
+            <div style="background: #fdf2e9; padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; border: 1px dashed #e67e22;">
+                <code style="color: #d35400; font-size: 12px; font-weight: bold; font-family: monospace;">
+                    FORMATO: Nome | Cargo | assets/foto.jpg
+                </code>
+            </div>
+
+            <textarea id="admin-aniversariantes-texto" rows="8" 
+                placeholder="Luis Mufenji | Administrador | assets/da.jpg" 
+                style="width: 100%; padding: 15px; border: 2px solid #edf2f7; border-radius: 8px; font-family: 'Courier New', monospace; font-size: 14px; box-sizing: border-box; outline: none; transition: border-color 0.3s; resize: vertical;"
+                onfocus="this.style.borderColor='#e67e22'" 
+                onblur="this.style.borderColor='#edf2f7'"></textarea>
+
+            <button onclick="salvarAniversariantes()" 
+                onmouseover="this.style.background='#cf6d1a'; this.style.transform='translateY(-2px)'"
+                onmouseout="this.style.background='#e67e22'; this.style.transform='translateY(0)'"
+                style="width: 100%; margin-top: 20px; padding: 18px; background: #e67e22; color: white; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(230, 126, 34, 0.2);">
+                🚀 Publicar o Aniversariante
+            </button>
+        </div>
+
+    </div> </div>
+
+
+
+
+
+
+    <div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e1e8e7;">
+    <h3 style="color: #0c1e34; border-bottom: 2px solid #ff9f43; padding-bottom: 10px;">📰 Últimas Notícias (Home)</h3>
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-top: 20px;">
+        
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 8px;">
+            <strong style="color: #ff9f43;">Notícia 1</strong>
+            <input type="text" id="notData1" placeholder="Data (ex: 07 Abr)" style="width:100%; margin-top:10px; padding:8px;">
+            <input type="text" id="notCat1" placeholder="Categoria (ex: FORMAÇÃO)" style="width:100%; margin-top:5px; padding:8px;">
+            <input type="text" id="notTit1" placeholder="Título da Notícia" style="width:100%; margin-top:5px; padding:8px;">
+            <textarea id="notRes1" placeholder="Breve resumo..." style="width:100%; margin-top:5px; padding:8px; height:60px;"></textarea>
+            <input type="text" id="notImg1" placeholder="Caminho da Imagem (assets/...)" style="width:100%; margin-top:5px; padding:8px;">
+            <input type="text" id="notLink1" placeholder="Link (noticias/n1.html)" style="width:100%; margin-top:5px; padding:8px;">
+            <button onclick="salvarNoticia(1)" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Atualizar Notícia 1</button>
+        </div>
+
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 8px;">
+            <strong style="color: #ff9f43;">Notícia 2</strong>
+            <input type="text" id="notData2" placeholder="Data" style="width:100%; margin-top:10px; padding:8px;">
+            <input type="text" id="notCat2" placeholder="Categoria" style="width:100%; margin-top:5px; padding:8px;">
+            <input type="text" id="notTit2" placeholder="Título" style="width:100%; margin-top:5px; padding:8px;">
+            <textarea id="notRes2" placeholder="Resumo..." style="width:100%; margin-top:5px; padding:8px; height:60px;"></textarea>
+            <input type="text" id="notImg2" placeholder="Caminho da Imagem" style="width:100%; margin-top:5px; padding:8px;">
+            <input type="text" id="notLink2" placeholder="Link" style="width:100%; margin-top:5px; padding:8px;">
+            <button onclick="salvarNoticia(2)" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Atualizar Notícia 2</button>
+        </div>
+
+        <div style="border: 1px solid #eee; padding: 15px; border-radius: 8px;">
+            <strong style="color: #ff9f43;">Notícia 3</strong>
+            <input type="text" id="notData3" placeholder="Data" style="width:100%; margin-top:10px; padding:8px;">
+            <input type="text" id="notCat3" placeholder="Categoria" style="width:100%; margin-top:5px; padding:8px;">
+            <input type="text" id="notTit3" placeholder="Título" style="width:100%; margin-top:5px; padding:8px;">
+            <textarea id="notRes3" placeholder="Resumo..." style="width:100%; margin-top:5px; padding:8px; height:60px;"></textarea>
+            <input type="text" id="notImg3" placeholder="Caminho da Imagem" style="width:100%; margin-top:5px; padding:8px;">
+            <input type="text" id="notLink3" placeholder="Link" style="width:100%; margin-top:5px; padding:8px;">
+            <button onclick="salvarNoticia(3)" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer;">Atualizar Notícia 3</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+<div style="background: white; border-radius: 12px; padding: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e1e8e7; margin-top: 30px;">
+    <h3 style="color: #0c1e34; border-bottom: 2px solid #ff9f43; padding-bottom: 10px;">👤 Gestão do Corpo Diretivo</h3>
+    
+    <div style="background: #fdfdfd; padding: 20px; border: 1px solid #eee; border-left: 5px solid #ff9f43; margin-bottom: 20px; border-radius: 8px;">
+        <strong style="display:block; margin-bottom:10px;">Direção Geral (Destaque)</strong>
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+            <input type="text" id="dirNome_dg" placeholder="Nome: Drª Irondina Lúcia Júlio" style="padding:10px;">
+            <input type="text" id="dirCargo_dg" value="Diretora Geral" style="padding:10px;">
+            <input type="text" id="dirFoto_dg" placeholder="Foto: assets/dg.jpg" style="padding:10px;">
+        </div>
+        <textarea id="dirBio_dg" placeholder="Biografia ou frase de liderança..." style="width:100%; margin-top:10px; padding:10px; height:60px;"></textarea>
+        <button onclick="salvarDiretor('dg')" style="margin-top:10px; background:#ff9f43; color:white; border:none; padding:10px 20px; border-radius:5px; cursor:pointer; font-weight:bold;">Atualizar Direção Geral</button>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+        <div style="padding:15px; border:1px solid #eee; border-radius:8px;">
+            <label style="font-size:12px; font-weight:bold;">DIRETOR ADMINISTRATIVO</label>
+            <input type="text" id="dirNome_da" placeholder="Nome" style="width:100%; margin:5px 0; padding:8px;">
+            <input type="hidden" id="dirCargo_da" value="Diretor Administrativo">
+            <input type="text" id="dirFoto_da" placeholder="assets/da.jpg" style="width:100%; padding:8px;">
+            <button onclick="salvarDiretor('da')" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer;">Salvar</button>
+        </div>
+        <div style="padding:15px; border:1px solid #eee; border-radius:8px;">
+            <label style="font-size:12px; font-weight:bold;">DIRETOR CLÍNICO</label>
+            <input type="text" id="dirNome_dc" placeholder="Nome" style="width:100%; margin:5px 0; padding:8px;">
+            <input type="hidden" id="dirCargo_dc" value="Diretor Clínico">
+            <input type="text" id="dirFoto_dc" placeholder="assets/dc.jpg" style="width:100%; padding:8px;">
+            <button onclick="salvarDiretor('dc')" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer;">Salvar</button>
+        </div>
+        <div style="padding:15px; border:1px solid #eee; border-radius:8px;">
+            <label style="font-size:12px; font-weight:bold;">DIRETORA DE ENFERMAGEM</label>
+            <input type="text" id="dirNome_de" placeholder="Nome" style="width:100%; margin:5px 0; padding:8px;">
+            <input type="hidden" id="dirCargo_de" value="Diretora de Enfermagem">
+            <input type="text" id="dirFoto_de" placeholder="assets/de.jpg" style="width:100%; padding:8px;">
+            <button onclick="salvarDiretor('de')" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer;">Salvar</button>
+        </div>
+        <div style="padding:15px; border:1px solid #eee; border-radius:8px;">
+            <label style="font-size:12px; font-weight:bold;">DIRETOR CIENTÍFICO PEDAGÓGICO</label>
+            <input type="text" id="dirNome_dp" placeholder="Nome" style="width:100%; margin:5px 0; padding:8px;">
+            <input type="hidden" id="dirCargo_dp" value="Diretor Pedagógico">
+            <input type="text" id="dirFoto_dp" placeholder="assets/dcp.jpg" style="width:100%; padding:8px;">
+            <button onclick="salvarDiretor('dp')" style="width:100%; margin-top:10px; background:#0c1e34; color:white; border:none; padding:8px; border-radius:4px; cursor:pointer;">Salvar</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+
+    
+async function salvarAniversariantes() {
+    const texto = document.getElementById('admin-aniversariantes-texto').value;
+    
+    // 1. PEGAR A SENHA DO CAMPO MASTER
+    const campoSenha = document.getElementById('admin-senha-master');
+    const senha = campoSenha ? campoSenha.value : "";
+
+    // Verificação básica antes de enviar
+    if (!senha) {
+        alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER para autorizar a publicação.");
+        return;
+    }
+
+    // Divide por linhas e remove linhas vazias
+    const linhas = texto.split('\n').filter(l => l.trim() !== "");
+    
+    const listaFinal = linhas.map(l => {
+        const partes = l.split('|');
+        return {
+            nome: partes[0] ? partes[0].trim() : "Sem Nome",
+            cargo: partes[1] ? partes[1].trim() : "Maternidade",
+            foto: partes[2] ? partes[2].trim() : "assets/default.jpg"
+        };
+    });
+
+    try {
+        // AJUSTE: Usando 127.0.0.1 para evitar conflitos de DNS do Windows
+        const res = await fetch('http://127.0.0.1:5000/api/config/atualizar', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                chave: 'lista_aniversariantes',
+                valor: JSON.stringify(listaFinal),
+                senha: senha 
+            })
+        });
+
+        const resultado = await res.json();
+
+        if (res.ok) {
+            alert("✅ Lista de hoje salva: " + listaFinal.length + " aniversariante(s).");
+        } else {
+            // Caso a senha esteja errada ou falte algum campo
+            alert("❌ Erro do Servidor: " + (resultado.erro || "Erro ao salvar."));
+        }
+    } catch (err) {
+        console.error("Detalhes do erro:", err);
+        alert("❌ Erro de conexão com o servidor.\n\nVerifique se o terminal do Node.js está aberto e se o CORS está configurado.");
+    }
+}</script>
+
+
+
+
+
+<script>
+// MISSAO, VISAO E VALORES
+// Garanta que esta variável esteja definida no topo do seu script
+// Usar o IP 127.0.0.1 é mais estável que 'localhost' para o navegador
+const BASE_URL_FIXA = 'http://127.0.0.1:5000/api/config/atualizar';
+
+async function salvarGenerico(chave, idInput) {
+    const campo = document.getElementById(idInput);
+    
+    // 1. PEGAR A SENHA DO CAMPO MASTER
+    const senhaMaster = document.getElementById('admin-senha-master');
+    const senha = senhaMaster ? senhaMaster.value : "";
+
+    if(!campo) return console.error("ID não encontrado:", idInput);
+    
+    const valor = campo.value;
+    // Removido o bloqueio por valor vazio caso queira apenas limpar um aviso
+    
+    // Verificação de segurança antes de enviar
+    if(!senha) {
+        alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER para autorizar a alteração.");
+        return;
+    }
+
+    try {
+        // Usando a URL direta com IP para evitar erros de DNS local
+        const res = await fetch(BASE_URL_FIXA, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ 
+                chave: chave, 
+                valor: valor,
+                senha: senha 
+            })
+        });
+
+        // Tenta ler a resposta como JSON
+        const resultado = await res.json();
+
+        if(res.ok) {
+            alert(`✅ ${chave.toUpperCase()} atualizada com sucesso!`);
+        } else {
+            // Se o servidor respondeu com erro (ex: Senha errada)
+            alert("❌ Erro do Servidor: " + (resultado.erro || "Falha na validação."));
+        }
+    } catch (err) { 
+
+        // Se cair aqui, o navegador não conseguiu chegar ao Node.js
+        console.error("Detalhes do erro de conexão:", err);
+        alert("❌ Erro ao conectar ao servidor.\n\nVerifique se:\n1. O Node.js está rodando (Porta 5000)\n2. Você instalou e configurou o CORS no server.js"); 
+    }
+}
+
+
+
+
+
+
+
+// DICAS ADMIN
+async function salvarDicaCompleta(n) {
+    // 1. PEGAR A SENHA DO CAMPO MASTER (Com proteção de existência do elemento)
+    const campoSenha = document.getElementById('admin-senha-master');
+    const senha = campoSenha ? campoSenha.value : "";
+
+    if (!senha) {
+        return alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER para autorizar a alteração da dica " + n);
+    }
+
+    // 2. Capturar os dados
+    const dados = {
+        img: document.getElementById(`imgDica${n}`).value,
+        seccao: document.getElementById(`secDica${n}`).value,
+        titulo: document.getElementById(`titInf${n}`).value,
+        corpo: document.getElementById(`corpoInf${n}`).value
+    };
+
+    if(!dados.img || !dados.seccao || !dados.titulo || !dados.corpo) {
+        return alert("Por favor, preencha todos os campos da dica " + n);
+    }
+
+    try {
+        // AJUSTE: Usando o IP 127.0.0.1 para maior estabilidade na conexão
+        const res = await fetch('http://127.0.0.1:5000/api/config/atualizar', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ 
+                chave: `dica_completa_${n}`, 
+                valor: JSON.stringify(dados),
+                senha: senha 
+            })
+        });
+
+        const resultado = await res.json();
+
+        if(res.ok) {
+            alert(`✅ Dica ${n} (com imagem e textos) atualizada com sucesso!`);
+        } else {
+            // Se a senha estiver errada ou houver erro no servidor
+            alert("❌ Erro do Servidor: " + (resultado.erro || "Erro ao salvar dica."));
+        }
+    } catch (err) {
+        console.error("Erro na Dica " + n + ":", err);
+        alert("❌ Erro ao conectar ao servidor.\n\nVerifique se o Node.js está rodando e se o CORS está ativo no backend.");
+    }
+}
+
+
+
+
+
+// GALERIA
+// 1. GERAR OS 16 CARDS ASSIM QUE A PÁGINA ABRIR
+document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('admin-galeria-grid');
+    if (grid) {
+        let htmlCards = '';
+        for (let i = 1; i <= 16; i++) {
+            htmlCards += `
+                <div class="admin-card" style="background: #fff; border: 1px solid #e0e0e0; padding: 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h4 style="margin: 0; color: #28a745;">Imagem ${i < 10 ? '0'+i : i}</h4>
+                        <span style="font-size: 10px; color: #999; font-weight: bold;">ID: galeria_item_${i}</span>
+                    </div>
+                    <label style="display: block; font-size: 11px; color: #666; margin-bottom: 5px; font-weight: 600;">URL DA IMAGEM</label>
+                    <input type="text" id="galUrl${i}" placeholder="Ex: assets/foto${i}.jpg" style="width: 100%; margin-bottom: 12px; padding: 8px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 13px;">
+                    <label style="display: block; font-size: 11px; color: #666; margin-bottom: 5px; font-weight: 600;">LEGENDA</label>
+                    <input type="text" id="galLegenda${i}" placeholder="Descrição da foto" style="width: 100%; margin-bottom: 15px; padding: 8px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; font-size: 13px;">
+                    <button onclick="salvarGaleria(${i})" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 13px;">
+                        🔄 Atualizar Item ${i}
+                    </button>
+                </div>`;
+        }
+        grid.innerHTML = htmlCards;
+        
+        // Após gerar os cards, busca os dados no banco para preencher os inputs
+        carregarDadosGaleria();
+    }
+});
+
+// 2. FUNÇÃO PARA BUSCAR DADOS DO MONGODB E PREENCHER OS CAMPOS
+async function carregarDadosGaleria() {
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/config/listar');
+        const configs = await response.json();
+
+        for (let i = 1; i <= 16; i++) {
+            const itemKey = `galeria_item_${i}`;
+            const config = configs.find(c => c.chave === itemKey);
+            if (config) {
+                const dados = JSON.parse(config.valor);
+                document.getElementById(`galUrl${i}`).value = dados.url || "";
+                document.getElementById(`galLegenda${i}`).value = dados.legenda || "";
+            }
+        }
+    } catch (err) {
+        console.warn("Aviso: Não foi possível carregar dados iniciais. O servidor está rodando?");
+    }
+}
+
+// 3. SUA FUNÇÃO DE SALVAMENTO (COMO VOCÊ ENVIOU)
+async function salvarGaleria(numero) {
+    const campoSenha = document.getElementById('admin-senha-master');
+    const senha = campoSenha ? campoSenha.value : "";
+
+    if (!senha) {
+        alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER para autorizar a atualização da Galeria.");
+        return;
+    }
+
+    const urlValue = document.getElementById(`galUrl${numero}`).value;
+    const legendaValue = document.getElementById(`galLegenda${numero}`).value;
+
+    if (!urlValue || !legendaValue) {
+        alert("Por favor, preencha a URL e a legenda antes de atualizar.");
+        return;
+    }
+
+    const dadosGaleria = { url: urlValue, legenda: legendaValue };
+
+    try {
+        const response = await fetch('http://127.0.0.1:5000/api/config/atualizar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                chave: `galeria_item_${numero}`,
+                valor: JSON.stringify(dadosGaleria),
+                senha: senha 
+            })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            alert(`✅ Item ${numero} da Galeria atualizado com sucesso!`);
+        } else {
+            alert(`❌ Erro do Servidor: ${data.erro || 'Erro ao atualizar'}`);
+        }
+    } catch (error) {
+        alert("❌ Erro de conexão com o servidor.");
+    }
+}
+
+
+
+
+// FUNCIONÁRIO DO MÊS
+async function salvarFuncionario() {
+    // 1. PEGAR A SENHA DO CAMPO MASTER
+    const campoSenha = document.getElementById('admin-senha-master');
+    const senha = campoSenha ? campoSenha.value : "";
+
+    if (!senha) {
+        alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER para autorizar o destaque do mês.");
+        return;
+    }
+
+    // 2. Pegar os valores exatos
+    const nome = document.getElementById('admin-func-nome').value;
+    const cargo = document.getElementById('admin-func-cargo').value;
+    const foto = document.getElementById('admin-func-foto').value;
+    const frase = document.getElementById('admin-func-frase').value;
+
+    if (!nome || !cargo) {
+        alert("Pelo menos nome e cargo são obrigatórios!");
+        return;
+    }
+
+    // 3. Criar o objeto conforme o modelo do seu banco
+    const dadosObj = { nome, cargo, foto, frase };
+
+    try {
+        // AJUSTE: Trocado 'localhost' por '127.0.0.1' para estabilidade
+        const response = await fetch('http://127.0.0.1:5000/api/config/atualizar', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                chave: 'funcionario_mes', 
+                valor: JSON.stringify(dadosObj), 
+                senha: senha 
+            })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert("✅ Destaque do mês atualizado com sucesso!");
+        } else {
+            // Exibe o erro vindo do backend (ex: Senha incorreta)
+            alert("❌ Erro do Servidor: " + (data.erro || "Erro ao salvar no servidor."));
+        }
+    } catch (error) {
+        console.error("Erro técnico no Funcionário:", error);
+        alert("❌ Erro de conexão.\n\nPossíveis causas:\n1. O Node.js não está rodando.\n2. Falta configurar o CORS no backend.");
+    }
+}
+
+
+
+
+
+// NOTICIAS ADMIN
+async function salvarNoticia(n) {
+    // 1. CAPTURAR A SENHA MASTER
+    const campoSenha = document.getElementById('admin-senha-master');
+    const senha = campoSenha ? campoSenha.value : "";
+
+    if (!senha) {
+        return alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER para autorizar a publicação da notícia " + n);
+    }
+
+    // 2. CAPTURAR OS DADOS DA NOTÍCIA
+    const dadosNoticia = {
+        data: document.getElementById(`notData${n}`).value,
+        categoria: document.getElementById(`notCat${n}`).value,
+        titulo: document.getElementById(`notTit${n}`).value,
+        resumo: document.getElementById(`notRes${n}`).value,
+        imagem: document.getElementById(`notImg${n}`).value,
+        link: document.getElementById(`notLink${n}`).value
+    };
+
+    // Validação básica
+    if(!dadosNoticia.titulo || !dadosNoticia.resumo) {
+        return alert("O título e o resumo da notícia são obrigatórios!");
+    }
+
+    try {
+        // 3. ENVIAR PARA O BACKEND (Usando o IP fixo)
+        const res = await fetch('http://127.0.0.1:5000/api/config/atualizar', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ 
+                chave: `noticia_home_${n}`, 
+                valor: JSON.stringify(dadosNoticia),
+                senha: senha 
+            })
+        });
+
+        const resultado = await res.json();
+
+        if(res.ok) {
+            alert(`✅ Notícia ${n} atualizada com sucesso no site!`);
+        } else {
+            alert("❌ Erro do Servidor: " + (resultado.erro || "Erro ao salvar notícia."));
+        }
+    } catch (err) {
+        console.error("Erro técnico na Notícia " + n + ":", err);
+        alert("❌ Erro ao conectar ao servidor. Verifique se o Node.js está ativo na porta 5000.");
+    }
+}
+
+
+
+
+
+// CORPO DIRETIVO
+// Função para carregar tudo ao abrir o site
+// 1. FUNÇÃO PARA SALVAR (O que faz o botão funcionar)
+async function salvarDiretor(idLogico) {
+    const campoSenha = document.getElementById('admin-senha-master');
+    const senha = campoSenha ? campoSenha.value : "";
+
+    if (!senha) {
+        alert("⚠️ Por favor, insira a CHAVE DE ACESSO MASTER.");
+        return;
+    }
+
+    // Captura os dados dos campos do Admin
+    const dados = {
+        nome: document.getElementById(`dirNome_${idLogico}`).value,
+        cargo: document.getElementById(`dirCargo_${idLogico}`).value,
+        foto: document.getElementById(`dirFoto_${idLogico}`).value,
+        bio: document.getElementById(`dirBio_${idLogico}`) ? document.getElementById(`dirBio_${idLogico}`).value : ""
+    };
+
+    try {
+        const res = await fetch('http://127.0.0.1:5000/api/config/atualizar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                chave: `diretor_${idLogico}`, 
+                valor: JSON.stringify(dados),
+                senha: senha 
+            })
+        });
+
+        const resultado = await res.json();
+
+        if (res.ok) {
+            alert(`✅ Dados atualizados com sucesso!`);
+        } else {
+            alert("❌ Erro: " + (resultado.erro || "Falha ao salvar."));
+        }
+    } catch (err) {
+        alert("❌ Erro de conexão. Verifique se o Node.js está rodando.");
+    }
+}
+
+// 2. FUNÇÃO PARA CARREGAR (O que mostra os dados atuais nos campos do admin)
+async function inicializarAdmin() {
+    const idsDiretores = ['dg', 'da', 'dc', 'de', 'dp'];
+    
+    for (const id of idsDiretores) {
+        try {
+            const res = await fetch(`http://127.0.0.1:5000/api/config/diretor_${id}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.valor) {
+                    const d = JSON.parse(data.valor);
+                    // Preenche os inputs do Admin para você ver o que já existe
+                    if(document.getElementById(`dirNome_${id}`)) document.getElementById(`dirNome_${id}`).value = d.nome;
+                    if(document.getElementById(`dirFoto_${id}`)) document.getElementById(`dirFoto_${id}`).value = d.foto;
+                    if(id === 'dg' && document.getElementById(`dirBio_dg`)) document.getElementById(`dirBio_dg`).value = d.bio;
+                }
+            }
+        } catch (e) { console.error("Erro ao carregar dados no admin", e); }
+    }
+}
+
+// Inicia o carregamento quando abrir o painel
+window.addEventListener('DOMContentLoaded', inicializarAdmin);
+
+
+
+
+
+
+
+
+
+
+
+
+function verConsultas() {
+    // Por agora apenas abre um aviso, depois pode redirecionar para uma lista
+    alert("A carregar lista de consultas agendadas da Maternidade...");
+    // window.location.href = 'consultas.html'; // Exemplo de uso futuro
+}
+
+</script>
+
+
+
+
+
+
+
+<script>
+function encerrarSessao() {
+    // 1. Apaga a chave de segurança (Limpando o LocalStorage)
+    localStorage.removeItem('adminLogado');
+    
+    // 2. Opcional: Se usares SessionStorage também apaga
+    sessionStorage.removeItem('adminLogado');
+
+    // 3. Redireciona para a página inicial
+    // Usamos o .replace para que o utilizador não consiga voltar atrás com o botão do navegador
+    window.location.replace("index.html");
+}
+</script>
+
+</body>
+</html>

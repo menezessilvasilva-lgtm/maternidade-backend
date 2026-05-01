@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas Externas - Maternidade Teresa Luami Jamba</title>
+    
+   <link rel="stylesheet" href="style-servicos.css"> 
+   
+   <link rel="stylesheet" href="../css/style.css">
+
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+
+
+
+
+<style>
+    :root {
+        --hospital-blue: #2980b9;
+        --hospital-green: #27ae60;
+        --text-dark: #2c3e50;
+        --bg-light: #f4f7f6;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        margin: 0;
+        padding: 20px;
+    }
+
+    .form-container {
+        max-width: 650px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 35px;
+        border-bottom: 2px solid var(--bg-light);
+        padding-bottom: 20px;
+    }
+
+    .form-header h2 {
+        margin: 0;
+        color: var(--text-dark);
+        font-size: 26px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .input-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #7f8c8d;
+        margin-bottom: 8px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #dcdde1;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: all 0.3s;
+        box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+        border-color: var(--hospital-blue);
+        outline: none;
+        box-shadow: 0 0 8px rgba(41, 128, 185, 0.2);
+    }
+
+    .btn-confirmar {
+        background-color: var(--hospital-blue);
+        color: white;
+        border: none;
+        padding: 16px;
+        width: 100%;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        margin-top: 10px;
+    }
+
+    .btn-confirmar:hover {
+        background-color: #3498db;
+        transform: translateY(-2px);
+    }
+
+    /* Modal de Sucesso Profissional */
+    #modalSucesso {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        align-items: center; justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 350px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+</style>
+
+
+</head>
+
+<body class="especialidade-body">
+
+  
+  
+  
+  
+  
+  
+    <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../assets/logo.png" alt="Maternidade Teresa Luami Jamba" class="logo-img">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="../index.html">Início</a></li>
+            <li><a href="../index.html#quem-somos">Quem Somos</a></li>
+            <li><a href="../index.html#servicos">Serviços</a></li>
+            <li><a href="../index.html#contacto">Contactos</a></li>
+        </ul>
+
+        <a href="tel:941333565" class="btn-urgencia">
+            <span class="cross-icon">+</span> URGÊNCIAS: 24H
+        </a>
+    </div>
+</nav>
+
+
+
+
+ <section class="area-banner" style="background-image: url('../assets/ce.jpeg');">
+    <div class="overlay">
+        <span class="subtitle" style="color: #ff9f43; font-weight: 600;">SERVIÇOS ESPECIALIZADOS</span>
+        <h1 style="color: #ffffff;">Consultas Externas</h1>
+    </div>
+</section>
+
+
+
+
+
+<section class="area-description">
+    <div class="container-servico">
+        <h2>Excelência no Atendimento Especializado</h2>
+        
+        <p class="description-lead">
+            O <strong>Serviço de Consultas Externas</strong> da Maternidade Teresa Luami Jamba é a porta de entrada para o acompanhamento clínico preventivo e especializado. O nosso foco é oferecer diagnósticos precisos e seguimento contínuo para a saúde da mulher e da criança, garantindo um atendimento humanizado no Luena, Moxico.
+        </p>
+
+        <div class="activities-box">
+            <h3>As principais atividades realizadas incluem:</h3>
+            <ul class="activities-list">
+                <li>
+                    <strong>Ginecologia e Obstetrícia:</strong> 
+                    Consultas de rotina, rastreios oncológicos (Papanicolau) e seguimento de patologias do sistema reprodutor feminino.
+                </li>
+             
+                <li>
+                    <strong>Planeamento Familiar:</strong> 
+                    Aconselhamento especializado e oferta de métodos contracetivos adequados a cada perfil de paciente.
+                </li>
+                <li>
+                    <strong>Vigilância Pré-Natal:</strong> 
+                    Monitorização rigorosa da gestação de baixo e médio risco, assegurando a saúde da mãe e o desenvolvimento fetal.
+                </li>
+                <li>
+                    <strong>Pediatria de Seguimento:</strong> 
+                    Consultas de puericultura para monitorar o crescimento, desenvolvimento e o calendário vacinal das crianças.
+                </li>
+                <li>
+                    <strong>Apoio Multidisciplinar:</strong> 
+                    Triagem e encaminhamento para exames de diagnóstico (Análises Clínicas e Ecografia) e serviços de Psicologia, se necessário.
+                </li>
+            </ul>
+        </div>
+
+        <p class="commitment-text">
+            O nosso compromisso é com a prevenção e o diagnóstico precoce, fundamentais para a redução da mortalidade materno-infantil na nossa província.
+        </p>
+    </div>
+</section>
+
+
+
+
+    <section class="area-team">
+        <div class="container-servico">
+            <div class="section-header" style="text-align: center; margin-bottom: 30px;">
+                <h3 style="color: #0c1e34; font-size: 1.8rem;">Nossa Equipa Técnica</h3>
+                <div class="divider" style="width: 60px; height: 3px; background: #ff9f43; margin: 10px auto;"></div>
+            </div>
+            
+            <div class="team-photo-wrapper">
+                <img src="../assets/ce1.jpg" alt="Equipa Técnica do Centro Materno">
+                <p class="caption">Profissionais qualificados e dedicados à saúde da mãe e do bebé na Maternidade Provincial do Moxico.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        </footer>
+
+
+
+
+<div class="form-container">
+    <div class="form-header">
+        <h2>Agendar Consulta Especializada</h2>
+    </div>
+
+    <form id="formConsulta">
+        
+        <div class="input-group">
+            <label>Nome do Paciente</label>
+            <input type="text" id="nome" placeholder="Nome Completo" required>
+        </div>
+
+        <div class="input-group">
+            <label>Nº do Bilhete de Identidade</label>
+            <input type="text" id="bi" placeholder="Nº do Bilhete de Identidade" required>
+        </div>
+
+        <div class="input-row">
+            <div style="flex: 1;">
+                <label>Idade</label>
+                <input type="number" id="idade" placeholder="Ex: 25" required>
+            </div>
+            <div style="flex: 2;">
+                <label>Telemóvel</label>
+                <input type="tel" id="telefone" placeholder="Ex: 941333565" required>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Bairro de Residência</label>
+            <input type="text" id="bairro" placeholder="Ex: Sangondo" required>
+        </div>
+
+        <div class="input-group">
+            <label>Especialidade Médica</label>
+            <select id="especialidade" required>
+                <option value="">Selecione a Especialidade</option>
+                <option value="Ginecologia">Ginecologia</option>
+                <option value="Obstetrícia">Obstetrícia</option>
+                <option value="Pediatria">Pediatria</option>
+                <option value="Planeamento Familiar">Planeamento Familiar</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="dum">Data da Última Menstruação (Opcional):</label>
+            <input type="date" id="dum">
+        </div>
+
+        <div class="input-group">
+    <label for="dataDesejada">Data Desejada para Consulta:</label>
+    <input type="date" id="dataDesejada" required>
+</div>
+        
+        <button type="submit" class="btn-confirmar">CONFIRMAR AGENDAMENTO</button>
+
+    </form> <p style="text-align: center; color: #7f8c8d; font-size: 13px; margin-top: 15px;">
+        Atendimento de Segunda a Sexta: 08h - 15h
+    </p>
+</div>
+
+
+
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="../assets/logo.png" alt="Logo Maternidade" class="footer-logo">
+            <p>Comprometidos com a saúde materno-infantil no Moxico, oferecendo atendimento humanizado e tecnologia de ponta.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Links Úteis</h4>
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../index.html#quem-somos">Quem Somos</a></li>
+                <li><a href="../index.html#servicos">Nossos Serviços</a></li>
+                <li><a href="../index.html#noticias">Últimas Notícias</a></li>
+                <li><a href="../index.html#contacto">Contactos</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Contacte-nos</h4>
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> Bairro Vila-Luso, Luena, Moxico</p>
+                <p><i class="fas fa-phone"></i> +244 941 333 565</p>
+                <p><i class="fas fa-envelope"></i> rhmatprovmx@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Urgências: 24h/24h</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Maternidade Provincial do Moxico Teresa Luami Jamba. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+
+
+
+
+
+<div id="modalSucesso">
+    <div class="modal-content">
+        <div style="font-size: 50px; color: #27ae60; margin-bottom: 15px;">✔</div>
+        <h3 style="margin: 0; color: #2c3e50;">Agendamento Guardado!</h3>
+        <p style="color: #7f8c8d; margin: 15px 0 25px;">Os dados da paciente foram registados com sucesso.</p>
+        <button onclick="fecharModal()" style="background:#27ae60; color:white; border:none; padding:12px 30px; border-radius:6px; cursor:pointer; font-weight:bold;">FECHAR</button>
+    </div>
+</div>
+
+
+
+
+<script>
+    const form = document.getElementById('formConsulta');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const dados = {
+            nome: document.getElementById('nome').value,
+            bi: document.getElementById('bi').value,
+            idade: document.getElementById('idade').value,
+            telefone: document.getElementById('telefone').value,
+            bairro: document.getElementById('bairro').value,
+            especialidade: document.getElementById('especialidade').value,
+            dum: document.getElementById('dum').value,
+            dataDesejada: document.getElementById('dataDesejada').value
+        };
+
+        // ATENÇÃO: O endereço agora bate com o teu pacienteRoutes.js
+        fetch('http://localhost:5000/api/pacientes/cadastrar', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dados)
+        })
+        .then(res => {
+            if (res.ok) {
+                // Abre o Modal de Sucesso que definiste no CSS
+                document.getElementById('modalSucesso').style.display = 'flex';
+                form.reset();
+            } else {
+                alert("Erro: O servidor recusou os dados. Verifique se o BI já existe.");
+            }
+        })
+        .catch(err => {
+            alert("Erro de conexão. Certifique-se que o servidor (Node.js) está ligado.");
+        });
+    });
+
+    // Função para o botão FECHAR do modal funcionar
+    function fecharModal() {
+        document.getElementById('modalSucesso').style.display = 'none';
+    }
+</script>
+
+
+
+
+
+
+
+
+</body>
+</html>

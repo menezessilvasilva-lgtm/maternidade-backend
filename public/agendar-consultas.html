@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Consulta - Maternidade Teresa Luami Jamba</title>
+    
+   <link rel="stylesheet" href="style-servicos.css"> 
+   
+   <link rel="stylesheet" href="../css/style.css">
+
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+
+
+
+
+<style>
+
+/* AJUSTE PARA TELEMÓVEL (Ecrãs até 768px) */
+@media (max-width: 768px) {
+    .employee-card-wrapper {
+        flex-direction: column-reverse; /* Coloca a imagem em cima e o texto em baixo */
+        text-align: center;            /* Centraliza o texto para ficar mais bonito */
+        padding: 20px;
+    }
+
+    .employee-image-area {
+        margin-bottom: 30px;           /* Dá espaço entre a foto e o texto */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .divider-left {
+        margin: 15px auto;             /* Centraliza a linha divisória */
+    }
+
+    .employee-month-section {
+        padding: 40px 0 !important;    /* Reduz um pouco o padding para não ocupar o ecrã todo */
+    }
+}
+
+
+
+
+
+
+
+
+    :root {
+        --hospital-blue: #2980b9;
+        --hospital-green: #27ae60;
+        --text-dark: #2c3e50;
+        --bg-light: #f4f7f6;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        margin: 0;
+        padding: 20px;
+    }
+
+    .form-container {
+        max-width: 650px;
+        margin: 30px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    .form-header {
+        text-align: center;
+        margin-bottom: 35px;
+        border-bottom: 2px solid var(--bg-light);
+        padding-bottom: 20px;
+    }
+
+    .form-header h2 {
+        margin: 0;
+        color: var(--text-dark);
+        font-size: 26px;
+    }
+
+    .input-group {
+        margin-bottom: 20px;
+    }
+
+    .input-row {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        color: #7f8c8d;
+        margin-bottom: 8px;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #dcdde1;
+        border-radius: 8px;
+        font-size: 15px;
+        transition: all 0.3s;
+        box-sizing: border-box;
+    }
+
+    input:focus, select:focus {
+        border-color: var(--hospital-blue);
+        outline: none;
+        box-shadow: 0 0 8px rgba(41, 128, 185, 0.2);
+    }
+
+    .btn-confirmar {
+        background-color: var(--hospital-blue);
+        color: white;
+        border: none;
+        padding: 16px;
+        width: 100%;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        margin-top: 10px;
+    }
+
+    .btn-confirmar:hover {
+        background-color: #3498db;
+        transform: translateY(-2px);
+    }
+
+    /* Modal de Sucesso Profissional */
+    #modalSucesso {
+        display: none;
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+        align-items: center; justify-content: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        text-align: center;
+        max-width: 350px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+
+
+
+
+.footer-navigation {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    padding: 40px 0;         /* Dá um espaço confortável no fim da página */
+    margin-top: 20px;
+}
+
+.btn-voltar-centro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background-color: transparent;
+    color: #2980b9;
+    border: 2px solid #2980b9;
+    border-radius: 50px;     /* Formato arredondado profissional */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.95em;
+    transition: all 0.4s ease;
+}
+
+.btn-voltar-centro:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+    box-shadow: 0 5px 15px rgba(41, 128, 185, 0.3);
+    transform: translateY(-2px); /* Efeito de levante ao passar o mouse */
+}
+
+/* Ajuste para ícone no hover */
+.btn-voltar-centro:hover i {
+    transform: translateX(-5px);
+    transition: 0.3s;
+}
+
+</style>
+
+
+</head>
+
+<body class="especialidade-body">
+
+  
+  
+  
+  
+  
+
+<div class="form-container">
+    <div class="form-header">
+        <h2>Agendar Consulta Especializada</h2>
+    </div>
+
+    <form id="formConsulta">
+        
+        <div class="input-group">
+            <label>Nome do Paciente</label>
+            <input type="text" id="nome" placeholder="Nome Completo" required>
+        </div>
+
+        <div class="input-group">
+            <label>Nº do Bilhete de Identidade</label>
+            <input type="text" id="bi" placeholder="Nº do Bilhete de Identidade" required>
+        </div>
+
+        <div class="input-row">
+            <div style="flex: 1;">
+                <label>Idade</label>
+                <input type="number" id="idade" placeholder="Ex: 25" required>
+            </div>
+            <div style="flex: 2;">
+                <label>Telemóvel</label>
+                <input type="tel" id="telefone" placeholder="Ex: 941333565" required>
+            </div>
+        </div>
+
+        <div class="input-group">
+            <label>Bairro de Residência</label>
+            <input type="text" id="bairro" placeholder="Ex: Sangondo" required>
+        </div>
+
+        <div class="input-group">
+            <label>Especialidade Médica</label>
+            <select id="especialidade" required>
+                <option value="">Selecione a Especialidade</option>
+                <option value="Ginecologia">Ginecologia</option>
+                <option value="Obstetrícia">Obstetrícia</option>
+                <option value="Pediatria">Pediatria</option>
+                <option value="Planeamento Familiar">Planeamento Familiar</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="dum">Data da Última Menstruação (Opcional):</label>
+            <input type="date" id="dum">
+        </div>
+
+        <div class="input-group">
+    <label for="dataDesejada">Data Desejada para Consulta:</label>
+    <input type="date" id="dataDesejada" required>
+</div>
+        
+        <button type="submit" class="btn-confirmar">CONFIRMAR AGENDAMENTO</button>
+
+    </form> <p style="text-align: center; color: #7f8c8d; font-size: 13px; margin-top: 15px;">
+        Atendimento de Segunda a Sexta: 08h - 15h
+    </p>
+</div>
+
+
+
+
+
+<div id="modalSucesso" class="modal-overlay">
+    <div class="modal-content">
+        <div class="icon-success">✔️</div>
+        <h3>Agendamento Guardado!</h3>
+        <p>Os dados da paciente foram registados com sucesso.</p>
+        
+        <div style="background: #f0f9f4; padding: 10px; border-radius: 8px; margin: 15px 0; border: 1px solid #c2e7d1;">
+            <p style="margin: 0; color: #1e7e34; font-weight: bold;">
+                Nº de Ordem: <span id="resOrdem">--</span>
+            </p>
+        </div>
+
+        <p style="font-size: 0.85em; color: #666;">Consulte o estado e a hora exata no site usando o seu BI.</p>
+        
+        <button class="btn-fechar" onclick="fecharModal()">FECHAR</button>
+    </div>
+</div>
+
+
+
+
+
+
+
+<section id="consulta-status" style="padding: 50px; text-align: center; background: #f9f9f9;">
+    <h2>Consultar Estado do Agendamento</h2>
+    <p>Introduza o seu Número de B.I. para verificar a sua hora e ordem.</p>
+    
+    <div style="margin-top: 20px;">
+        <input type="text" id="biBusca" placeholder="Digite seu B.I." style="padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #ccc;">
+        <button onclick="buscarAgendamento()" style="padding: 10px 20px; background: #2980b9; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Verificar Agora
+        </button>
+    </div>
+
+    <div id="resultadoBusca" style="margin-top: 30px; display: none;">
+        <div id="cartaoStatus" style="max-width: 400px; margin: auto; padding: 20px; border-radius: 10px; border-left: 5px solid #2980b9; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <h4 id="resNome" style="margin: 0; color: #333;">Nome da Paciente</h4>
+            <hr>
+            <p><strong>Estado:</strong> <span id="resStatus">---</span></p>
+            <p><strong>Data:</strong> <span id="resData">---</span></p>
+            <p><strong>Hora Marcada:</strong> <span id="resHora" style="font-size: 1.2em; color: #2980b9;">---</span></p>
+            <p><strong>Nº de Ordem:</strong> <span id="resOrdemFinal">---</span></p>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<div class="footer-navigation">
+    <a href="index.html" class="btn-voltar-centro">
+        <i class="fas fa-chevron-left"></i> Voltar à Página Inicial
+    </a>
+</div>
+
+
+
+
+<script>
+    const form = document.getElementById('formConsulta');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // 1. Captura os dados corretamente
+        const dadosAgendamento = {
+            nome: document.getElementById('nome').value,
+            bi: document.getElementById('bi').value,
+            idade: document.getElementById('idade').value,
+            telefone: document.getElementById('telefone').value,
+            bairro: document.getElementById('bairro').value,
+            especialidade: document.getElementById('especialidade').value,
+            dum: document.getElementById('dum').value,
+            dataDesejada: document.getElementById('dataDesejada').value
+        };
+
+        try {
+            const res = await fetch('http://localhost:5000/api/pacientes/cadastrar', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dadosAgendamento)
+            });
+
+            const resultado = await res.json();
+
+            if (res.ok) {
+                // 2. AQUI ESTÁ O SEGREDO: Pegamos o número que veio do MongoDB
+                // Verificamos se o servidor enviou em resultado.dados.numeroOrdem
+                const numOrdem = resultado.dados ? resultado.dados.numeroOrdem : "Gerado";
+                
+                document.getElementById('resOrdem').innerText = numOrdem;
+
+                // 3. Mostra o modal
+                document.getElementById('modalSucesso').style.display = 'flex';
+                form.reset();
+            } else {
+                alert("Erro: " + (resultado.erro || "Falha ao registar."));
+            }
+        } catch (err) {
+            alert("Erro de ligação. O servidor Node.js está ativo?");
+        }
+    });
+
+    function fecharModal() {
+        document.getElementById('modalSucesso').style.display = 'none';
+    }
+
+
+
+
+
+
+
+
+async function buscarAgendamento() {
+    const bi = document.getElementById('biBusca').value;
+    const divResultado = document.getElementById('resultadoBusca');
+
+    if (!bi) {
+        alert("Por favor, digite o B.I.");
+        return;
+    }
+
+    try {
+        // Precisas de criar esta rota no teu backend!
+        const res = await fetch(`http://localhost:5000/api/pacientes/consultar/${bi}`);
+        const paciente = await res.json();
+
+        if (res.ok) {
+            divResultado.style.display = 'block';
+            document.getElementById('resNome').innerText = paciente.nome;
+            document.getElementById('resStatus').innerText = paciente.status || "Pendente";
+            document.getElementById('resData').innerText = paciente.dataDesejada;
+            document.getElementById('resHora').innerText = paciente.horaConsulta || "Aguardando Gestor";
+            document.getElementById('resOrdemFinal').innerText = paciente.numeroOrdem;
+            
+            // Muda a cor conforme o estado
+            const cor = paciente.status === 'Confirmado' ? '#27ae60' : '#f39c12';
+            document.getElementById('cartaoStatus').style.borderLeftColor = cor;
+        } else {
+            alert("Nenhum agendamento encontrado para este B.I.");
+            divResultado.style.display = 'none';
+        }
+    } catch (err) {
+        alert("Erro ao ligar ao servidor.");
+    }
+}
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

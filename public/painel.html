@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+
+<script>
+    (function() {
+        if (localStorage.getItem('adminLogado') !== 'true') {
+            // Adicionamos ?login=restrito ao final do endereço
+            window.location.replace("index.html?login=restrito");
+        }
+    })();
+</script>
+
+
+
+
+    <meta charset="UTF-8">
+    <title>Painel Maternidade Teresa Jamba</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+/* AJUSTE PARA TELEMÓVEL (Ecrãs até 768px) */
+@media (max-width: 768px) {
+    .employee-card-wrapper {
+        flex-direction: column-reverse; /* Coloca a imagem em cima e o texto em baixo */
+        text-align: center;            /* Centraliza o texto para ficar mais bonito */
+        padding: 20px;
+    }
+
+    .employee-image-area {
+        margin-bottom: 30px;           /* Dá espaço entre a foto e o texto */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .divider-left {
+        margin: 15px auto;             /* Centraliza a linha divisória */
+    }
+
+    .employee-month-section {
+        padding: 40px 0 !important;    /* Reduz um pouco o padding para não ocupar o ecrã todo */
+    }
+}
+
+
+
+
+
+
+
+
+/* 1. Reset e Base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body { 
+    font-family: 'Segoe UI', Roboto, sans-serif; 
+    background-color: #f4f7f6; 
+    padding: 20px; 
+}
+
+/* 2. Layout do Painel */
+.container { 
+    max-width: 1300px; 
+    margin: auto; 
+    background: white; 
+    padding: 25px; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+.header { text-align: center; margin-bottom: 25px; }
+.logo { width: 100px; height: auto; margin-bottom: 10px; }
+
+/* 3. Botões de Topo */
+.btn-container { text-align: center; margin-bottom: 25px; }
+.btn-blue { 
+    background: #2980b9; color: white; border: none; padding: 12px 24px; 
+    border-radius: 6px; cursor: pointer; font-weight: bold; margin: 0 10px;
+    transition: 0.3s;
+}
+.btn-blue:hover { background: #3498db; transform: translateY(-2px); }
+
+/* 4. Tabela Profissional */
+table { width: 100%; border-collapse: collapse; background: white; margin-top: 10px; }
+th, td { padding: 14px; border-bottom: 1px solid #eee; text-align: left; font-size: 14px; }
+th { background-color: #27ae60; color: white; font-weight: 600; text-transform: uppercase; font-size: 12px; }
+
+/* 5. Ações da Tabela */
+.acoes-grid { display: flex; gap: 5px; justify-content: flex-start; }
+
+.btn-acao {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit { background: #3498db; }
+.notify { background: #2ecc71; }
+.delete { background: #e74c3c; }
+
+.btn-acao:hover { 
+    transform: scale(1.1); 
+    filter: brightness(1.1); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 6. Modal de Reagendamento */
+.modal-overlay {
+    display: none; /* Mantém escondido até o JS chamar */
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center; 
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white; padding: 30px; border-radius: 12px;
+    width: 90%; max-width: 450px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.modal-content h3 { margin-bottom: 20px; color: #2c3e50; text-align: center; }
+
+/* Estilo dos campos dentro do Modal */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #555; }
+.form-group input, .form-group select { 
+    width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; 
+}
+
+.modal-actions { display: flex; gap: 10px; margin-top: 25px; }
+.btn-save { background: #27ae60; color: white; border: none; padding: 12px; flex: 1; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.btn-cancel { background: #95a5a6; color: white; border: none; padding: 12px; flex: 1; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+/* 7. Impressão */
+@media print { 
+    .btn-container, .acoes-col, .btn-acao { display: none !important; }
+    body { background: white; padding: 0; }
+    .container { box-shadow: none; border: none; width: 100%; max-width: 100%; }
+}
+
+
+
+
+
+
+
+    
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="logo.png" class="logo" onerror="this.style.display='none'">
+        <h2>Maternidade Provincial do Moxico Teresa Jamba</h2>
+        <p>Controlo de Agendamentos - Luena</p>
+    </div>
+
+    <div class="btn-container">
+        <button class="btn-blue" onclick="carregarPacientes()"><i class="fas fa-sync"></i> Atualizar Lista</button>
+        <button class="btn-blue" onclick="window.print()"><i class="fas fa-print"></i> Imprimir Lista Completa</button>
+    </div>
+
+
+
+<div class="filtros-container" style="background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 15px;">
+    <label style="font-weight: bold; color: #2c3e50;"><i class="fas fa-filter"></i> Filtrar por Especialidade:</label>
+    <select id="filtroEspecialidade" onchange="filtrarPacientes()" style="padding: 8px; border-radius: 5px; border: 1px solid #ccc; min-width: 200px;">
+        <option value="todos">Todas as Especialidades</option>
+        <option value="Ginecologia">Ginecologia</option>
+        <option value="Obstetrícia">Obstetrícia</option>
+        <option value="Planeamento Familiar">Planeamento Familiar</option>
+        <option value="Pediatria">Pediatria</option>
+    </select>
+    <span id="contadorFiltrados" style="font-size: 0.9em; color: #666; margin-left: auto;"></span>
+</div>
+
+
+    
+    <table>
+        <thead>
+    <tr>
+        <th>ORD</th>
+        <th>Nº B.I.</th>
+        <th>Nome da Paciente</th>
+        <th>Consulta</th>
+        <th>Hora</th>
+        <th>Estado</th>
+        <th>Especialidade</th>
+        <th>Telefone</th> <th class="acoes-col">Acções</th>
+    </tr>
+</thead>
+        <tbody id="tabelaPacientes">
+            </tbody>
+    </table>
+</div>
+
+<div id="modalEdicao" class="modal-overlay">
+    <div class="modal-content">
+        <h3>Gestão de Agendamento</h3>
+        <form id="formEdicao">
+            <input type="hidden" id="editId">
+
+            <label>Nome da Paciente:</label>
+            <input type="text" id="editNome" readonly style="background: #f4f4f4;"> <div style="display: flex; gap: 10px;">
+                <div style="flex: 1;">
+                    <label>Nova Data:</label>
+<input type="date" id="editData" required>
+                </div>
+                <div style="flex: 1;">
+                    <label>Hora Marcada:</label>
+                    <input type="time" id="editHora" required>
+                </div>
+            </div>
+            
+            <label>Especialidade:</label>
+            <select id="editEspecialidade">
+                <option value="Ginecologia">Ginecologia</option>
+                <option value="Obstetrícia">Obstetrícia</option>
+                <option value="Planeamento Familiar">Planeamento Familiar</option>
+                <option value="Pediatria">Pediatria</option>
+            </select>
+
+            <label>Estado do Agendamento:</label>
+            <select id="editStatus" style="font-weight: bold;">
+                <option value="Pendente" style="color: orange;">Pendente</option>
+                <option value="Confirmado" style="color: green;">Confirmado</option>
+                <option value="Cancelado" style="color: red;">Cancelado</option>
+                <option value="Concluído" style="color: blue;">Concluído</option>
+            </select>
+
+            <div class="modal-actions">
+                <button type="submit" class="btn-save">Atualizar Agendamento</button>
+                <button type="button" class="btn-cancel" onclick="fecharModal()">Voltar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script src="script_painel.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

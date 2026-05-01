@@ -1,0 +1,2895 @@
+/* 1. CONFIGURAÇÕES TOTAIS E TIPOGRAFIA */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+
+padding-top: 105px; /* Este espaço "empurra" o site para baixo da navbar fixa */
+
+    width: 100%;
+    background-color: #f4f7f6;
+    -webkit-font-smoothing: antialiased;
+    color: #444;
+}
+
+/* 2. HIERARQUIA DE TEXTOS */
+h1, h2, h3, h4 {
+    font-weight: 600;
+    color: #0c1e34;
+    line-height: 1.3;
+}
+
+p, li, span, a {
+    font-weight: 400; 
+    line-height: 1.6;
+}
+
+/* 3. CONTENTOR PADRÃO */
+.container {
+    width: 92%; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    position: relative;
+}
+
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+
+
+
+/* =========================================
+   ANIMAÇÕES GERAIS
+   ========================================= */
+@keyframes slideDown {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* Podes também já deixar preparada uma para o surgimento suave */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+
+/* ==========================================================================
+   NAVBAR PRO - DESKTOP
+   ========================================================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: rgba(255, 255, 255, 0.85); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.nav-container {
+    width: 92%;
+    max-width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Ajuste do Logo e Identidade */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaço entre o ícone e o texto */
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.logo-img {
+    height: 55px; /* Tamanho ideal para não esticar a navbar */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1; /* Mantém as duas linhas próximas */
+}
+
+.maternidade-txt {
+    color: #1a1a1a; 
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+}
+
+.jamba-txt {
+    color: #00BFFF; 
+    font-size: 22px;
+    font-weight: 800;
+    margin-top: 1px;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+/* Navegação e Separador */
+.nav-right-group {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1a4a7a;
+    font-weight: 500;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: #ff9f43; }
+
+/* Separador Vertical */
+.nav-right-group::before {
+    content: "";
+    width: 1px;
+    height: 30px;
+    background-color: #e2e8f0;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espaçamento entre telefone e cadeado */
+}
+
+.btn-action-pro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;  /* Tamanho ideal para desktop */
+    height: 44px;
+    background-color: #f8fafc;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn-action-pro i {
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Efeitos Hover - Desktop Only */
+.btn-phone:hover {
+    background-color: #ff9f43; /* Laranja Jamba */
+    box-shadow: 0 8px 20px rgba(255, 159, 67, 0.3);
+}
+
+.btn-lock:hover {
+    background-color: #0c1e34; /* Azul Maternidade */
+    box-shadow: 0 8px 20px rgba(12, 30, 52, 0.2);
+}
+
+.btn-action-pro:hover i {
+    color: #ffffff;
+    transform: scale(1.15);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   HERO SECTION - CONFIGURAÇÃO PROFISSIONAL
+   ========================================= */
+
+.hero-screen {
+    width: 100%;
+    height: 75vh; 
+    min-height: 500px; 
+    position: relative;
+    /* PERMITE que o menu lateral flutue por cima */
+    overflow: visible !important; 
+    background-color: #0c1e34;
+    z-index: 5; 
+    margin-bottom: 0; 
+}
+
+.screen-slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    /* PRENDE as imagens do carrossel dentro do limite do Hero */
+    overflow: hidden !important; 
+    border-radius: 0 0 50px 50px; /* Leve curvatura opcional no fundo */
+}
+
+.my-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; 
+    z-index: 1;
+}
+
+.my-slide.active {
+    opacity: 1 !important;
+    z-index: 2;
+}
+
+/* Overlay para contraste - Gradiente melhora a leitura do texto */
+.my-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+    z-index: 3;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    color: #ffffff;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Um pouco maior no desktop */
+    font-weight: 800;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8);
+}
+
+.hero-title span {
+    color: #ff9f43; 
+    display: block;
+    margin-top: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-divider {
+    width: 80px;
+    height: 4px;
+    background: #ff9f43;
+    margin: 25px auto;
+    border-radius: 2px;
+}
+
+.hero-motto {
+    font-size: 1.4rem;
+    font-weight: 400;
+    font-style: italic;
+    opacity: 0.9;
+}
+
+
+
+
+/* =========================================
+    QUEM SOMOS - REFINAMENTO DESKTOP
+   ========================================= */
+
+.quem-somos {
+    padding: 100px 0; 
+    background: linear-gradient(135deg, #f9fbfd 0%, #ffffff 100%);
+    text-align: center;
+    /* GARANTIA: Liberta o menu lateral */
+    overflow: visible !important;
+}
+
+.about-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* Importante para o Desktop não esmagar os cards */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.titulo-igual {
+    color: #1a4a7a;
+    font-size: 28px; 
+    font-weight: 800; 
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 2px; 
+    margin-bottom: 60px; 
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.titulo-igual::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: #ff9f43; 
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+}
+
+.about-card {
+    border-radius: 20px;
+    padding: 40px 30px;
+    flex: 1;
+    max-width: 380px;
+    min-width: 280px; /* Reduzi levemente para segurança */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+}
+
+/* Cores de Fundo dos Cards */
+.card-missao { background-color: #e3f2fd; }
+.card-visao   { background-color: #ffebee; }
+.card-valores { background-color: #e8f5e9; }
+
+.about-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.card-icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+
+
+
+
+
+/* =========================================
+   2. SECÇÃO DE SERVIÇOS - DESKTOP
+   ========================================= */
+
+/* SECÇÃO DE SERVIÇOS - ESTILO PREMIUM */
+.services-section {
+    padding: 100px 0;
+    background-color: #f8fafc; /* Cinza azulado muito leve para destacar os cards brancos */
+    overflow: visible !important;
+}
+
+.services-grid {
+    display: grid !important;
+    /* auto-fit garante que o layout se ajuste sozinho ao tamanho da tela */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    gap: 30px !important;
+    max-width: 1250px !important;
+    margin: 0 auto !important;
+    padding: 0 25px !important;
+}
+
+.service-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 24px !important;
+    padding: 45px 35px !important;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* Hover refinado: Sombra suave e borda colorida */
+.service-card:hover {
+    transform: translateY(-12px) !important;
+    border-color: #00BFFF !important;
+    box-shadow: 0 20px 40px rgba(0, 191, 255, 0.1) !important;
+}
+
+/* Ícone com formato Squircle moderno */
+.icon-circle {
+    width: 85px;
+    height: 85px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border-radius: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem !important;
+    color: #00BFFF !important;
+    margin-bottom: 25px;
+    transition: 0.3s ease;
+}
+
+.service-card:hover .icon-circle {
+    background: #00BFFF;
+    color: #ffffff !important;
+    transform: scale(1.1);
+}
+
+.service-card h3 {
+    color: #0f172a;
+    font-size: 1.4rem !important;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #64748b;
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   4. SEÇÃO BIOGRAFIA (TERESA LUAMI JAMBA) - DESKTOP
+   ============================================================ */
+
+/* --- BIOGRAFIA TERESA JAMBA --- */
+.bio-section {
+    width: 100%;
+    background-color: #ffffff; 
+    padding: 100px 0;
+    overflow: visible !important; /* Liberta o menu lateral */
+}
+
+.bio-container {
+    display: flex !important;
+    align-items: center; 
+    justify-content: center;
+    gap: 5rem; /* Aumentado para dar ar de revista */
+    max-width: 1200px;
+    width: 90%; 
+    margin: 0 auto;
+}
+
+.bio-image {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+/* Efeito decorativo atrás da imagem */
+.bio-image::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f0f7ff;
+    top: 30px;
+    left: -30px;
+    border-radius: 30px;
+    z-index: -1;
+}
+
+.bio-image img {
+    width: 100%;
+    max-width: 480px; 
+    height: 550px; /* Altura fixa para manter proporção editorial */
+    object-fit: cover; /* Garante que a foto não estique */
+    border-radius: 30px; 
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); 
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 10px solid #ffffff; 
+}
+
+.bio-image img:hover {
+    transform: translateY(-10px);
+}
+
+.bio-text {
+    flex: 1.2;
+    padding-left: 50px; /* Aumenta a distância da imagem para o texto não sufocar */
+}
+
+/* O "Selo" de Homenagem */
+.sub-homenagem {
+    display: flex;
+    align-items: center;
+    color: #00BFFF; /* Azul médico vibrante para modernidade */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px; /* Espaçamento entre letras dá um ar de luxo */
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+}
+
+/* O Título Principal */
+.bio-text h2 {
+    font-size: 3.2rem; 
+    color: #1a4a7a; 
+    font-weight: 800;
+    line-height: 1.1; /* Títulos grandes pedem entrelinha curta */
+    margin-bottom: 2.5rem;
+    letter-spacing: -1.5px; /* "Aperta" as letras do título para impacto visual */
+}
+
+/* O Corpo do Texto */
+.bio-text p {
+    font-size: 1.15rem; /* Tamanho de leitura confortável */
+    line-height: 2; /* DOBRO de espaçamento para o texto "respirar" */
+    color: #4a5568; /* Cinza escuro sofisticado (menos cansativo que o preto) */
+    margin-bottom: 1.8rem;
+    text-align: justify;
+    font-weight: 400;
+}
+
+/* Efeito de primeira letra (Drop Cap) - Estilo revista/livro */
+.bio-text p:first-of-type::first-letter {
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #1a4a7a;
+    float: left;
+    margin-right: 15px;
+    line-height: 0.9;
+    margin-top: 8px;
+}
+
+/* Estilo para a citação final entre aspas */
+.bio-text p:last-child {
+    font-style: italic;
+    color: #1a4a7a;
+    font-weight: 500;
+    border-left: 3px solid #ff9f43; /* Detalhe em laranja para fechar o design */
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
+
+
+
+/* ============================================================
+   5. SEÇÃO ESTATÍSTICAS (BANNER IMPACTO) - DESKTOP
+   ============================================================ */
+
+/* --- SEÇÃO DE ESTATÍSTICAS --- */
+.stats-section {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    margin-top: 50px;
+    padding: 100px 0;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background-image: url('assets/estatisticas-bg.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax */
+    z-index: 1;
+    /* AJUSTE: Removido o overflow: hidden para não travar o menu */
+    overflow: visible !important; 
+}
+
+/* Overlay Azul Institucional */
+.stats-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 30, 52, 0.85); 
+    z-index: 0;
+}
+
+/* Grid de Estatísticas - 4 Colunas no PC */
+.stats-grid {
+    position: relative;
+    z-index: 5;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 30px !important;
+    width: 90% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* Cards com Efeito de Vidro */
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 40px 20px;
+    text-align: center;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    color: #ffffff;
+}
+
+.stat-card:hover {
+    transform: translateY(-15px) !important;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ff9f43; 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stat-number {
+    font-size: 3.8rem; 
+    color: #ff9f43; 
+    font-weight: 800;
+    margin-bottom: 10px;
+    text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+}
+
+.stat-card p {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    opacity: 0.9;
+    margin: 0;
+}
+
+
+
+
+
+/* ============================================================
+   6. GALERIA DE FOTOS - DESKTOP
+   ============================================================ */
+
+.galeria-section {
+    padding: 80px 0;
+    background-color: #ffffff;
+}
+
+.galeria-grid {
+    display: grid;
+    /* repeat(4, 1fr) diz ao navegador: "quero 4 colunas iguais, não importa o quê" */
+    grid-template-columns: repeat(4, 1fr) !important; 
+    gap: 15px; /* Diminuímos levemente o espaço entre elas para caber melhor */
+    width: 100%;
+    max-width: 1200px; /* Garante que a galeria possa expandir */
+    margin: 30px auto 0 auto; /* Centraliza a galeria na página */
+}
+
+/* Garante que o container pai não esteja limitando a largura */
+.galeria-section .container {
+    max-width: 1250px !important;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.galeria-item {
+    position: relative;
+    width: 100%; /* Garante que o item ocupe a largura da coluna */
+    height: 250px; /* Altura fixa para manter a simetria */
+    border-radius: 15px;
+    overflow: hidden;
+    display: block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Isso impede que a imagem fique esticada ou magra */
+    transition: transform 0.5s ease;
+}
+
+.galeria-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 30, 52, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.galeria-overlay span {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+}
+
+/* Hover Effects */
+.galeria-item:hover img {
+    transform: scale(1.1);
+}
+
+.galeria-item:hover .galeria-overlay {
+    opacity: 1;
+}
+
+
+
+/* Torna o fundo preto semi-transparente */
+.lightboxOverlay {
+    background-color: rgba(0, 0, 0, 0.85) !important; /* 0.85 é o nível de transparência */
+    opacity: 1 !important;
+}
+
+/* Garante que os botões de fechar e as setas fiquem visíveis */
+.lb-data .lb-close, .lb-prev, .lb-next {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+
+
+
+/* ================================================================
+   7. SECÇÃO DE NOTÍCIAS - DESKTOP
+   ================================================================ */
+
+/* Espaçamento Consistente entre Secções */
+.galeria-section, .news-section {
+    padding: 100px 0;
+    background-color: #ffffff;
+}
+
+.news-section {
+    background-color: #f8fafc;
+    border-top: 1px solid #edf2f7;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+/* Títulos e Divisores */
+.section-header h2 {
+    font-size: 2.8rem;
+    color: #1a4a7a;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.divider {
+    width: 60px;
+    height: 4px;
+    background: #00BFFF;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+/* --- GRID RESPONSIVA (O SEGREDO DO MOBILE) --- */
+.galeria-grid, .news-grid {
+    display: grid !important;
+    /* Desktop: 3 colunas para notícias (fica mais elegante que 4 se houver pouco texto) */
+    grid-template-columns: repeat(3, 1fr) !important; 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Estilo de Card Profissional */
+.news-card {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(26, 74, 122, 0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(26, 74, 122, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 45px rgba(26, 74, 122, 0.12);
+    border-color: #00BFFF;
+}
+
+/* Imagens */
+.news-thumb { 
+    height: 240px; 
+    overflow: hidden; 
+}
+.news-thumb img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: 0.6s; 
+}
+
+/* Conteúdo Centralizado */
+.news-info { 
+    padding: 35px 25px; 
+    text-align: center; /* Centraliza o texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza a tag e o link */
+    flex-grow: 1;
+}
+
+.news-tag {
+    display: inline-block;
+    background: rgba(0, 191, 255, 0.1);
+    color: #00BFFF;
+    padding: 6px 16px;
+    border-radius: 50px; /* Estilo pílula */
+    font-size: 0.75rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.news-info h4 { 
+    color: #1a4a7a; 
+    font-size: 1.25rem; 
+    margin-bottom: 15px; 
+    line-height: 1.4;
+    font-weight: 700;
+}
+
+.news-info p {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.news-link { 
+    color: #00BFFF; 
+    font-weight: 700; 
+    text-decoration: none; 
+    display: inline-flex; 
+    align-items: center;
+    font-size: 0.9rem;
+    margin-top: auto; /* Empurra para o fim do card */
+}
+
+.news-link::after { 
+    content: ' →'; 
+    margin-left: 5px; 
+    transition: 0.3s; 
+}
+
+.news-link:hover::after {
+    margin-left: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ============================================================
+   8. FUNCIONÁRIO DO MÊS - AJUSTE
+   ============================================================ */
+
+.employee-month-section {
+    padding: 120px 0;
+    background-color: #f8fbff;
+    overflow: visible !important;
+}
+
+.employee-card-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ffffff;
+    border-radius: 40px; /* Cantos mais orgânicos */
+    padding: 80px;
+    box-shadow: 0 30px 70px rgba(26, 74, 122, 0.08);
+    gap: 80px;
+    max-width: 1150px;
+    margin: 0 auto;
+    position: relative;
+    border: 1px solid rgba(26, 74, 122, 0.05);
+}
+
+.badge-month {
+    background: linear-gradient(135deg, #1a4a7a, #00BFFF);
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 0 10px 20px rgba(0, 191, 255, 0.2);
+}
+
+.employee-content h2 {
+    font-size: 3rem;
+    color: #1a4a7a;
+    margin: 30px 0 15px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.employee-quote {
+    font-style: italic;
+    font-size: 1.3rem;
+    color: #5a6d81;
+    line-height: 2; /* Texto mais arejado */
+    margin-bottom: 40px;
+    padding-left: 30px;
+    border-left: 4px solid #00BFFF;
+}
+
+.employee-name {
+    font-size: 1.8rem;
+    color: #1a4a7a;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.employee-role {
+    color: #ff9f43; /* Ouro para destacar o cargo do premiado */
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+}
+
+/* Efeito de Foto Profissional */
+.photo-frame {
+    position: relative;
+    width: 380px;
+    height: 380px;
+    transition: transform 0.5s ease;
+}
+
+.photo-frame:hover {
+    transform: scale(1.02);
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 15px solid #ffffff;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+}
+
+/* Ícone de Prémio */
+.award-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #ff9f43;
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: #fff;
+    box-shadow: 0 15px 30px rgba(255, 159, 67, 0.4);
+    animation: pulse-gold 2s infinite;
+}
+
+
+
+
+
+
+
+/* ============================================================
+   ANIVERSARIANTES DO DIA - REFINAMENTO DE CENTRALIZAÇÃO
+   ============================================================ */
+
+.birthday-section {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    padding: 100px 0;
+    text-align: center;
+}
+
+/* Brilhos de Fundo Estáticos (Não interferem no layout) */
+.birthday-section::before, .birthday-section::after {
+    content: '✨';
+    position: absolute;
+    font-size: 28px;
+    animation: float-soft 5s ease-in-out infinite;
+    opacity: 0.3;
+    z-index: 0;
+}
+.birthday-section::before { top: 15%; left: 8%; }
+.birthday-section::after { bottom: 20%; right: 8%; animation-delay: 2.5s; }
+
+@keyframes float-soft {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(15deg); }
+}
+
+/* Grelha Inteligente: Adapta-se de 1 a 6 itens */
+.birthday-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* O Cartão Profissional */
+.birthday-item {
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 40px 30px;
+    width: 280px; /* Largura ideal para caberem 3 ou 4 na linha */
+    border: 1px solid rgba(26, 74, 122, 0.06);
+    box-shadow: 0 10px 30px rgba(26, 74, 122, 0.04);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.birthday-item:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 45px rgba(255, 159, 67, 0.15);
+    border-color: #ff9f43;
+}
+
+/* Foto com Moldura de Ouro */
+.image-wrapper {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 4px solid #ffffff;
+    outline: 2px solid #ff9f43;
+    margin-bottom: 25px;
+    overflow: hidden;
+    animation: pulse-elegant 2.5s infinite;
+}
+
+@keyframes pulse-elegant {
+    0% { box-shadow: 0 0 0 0 rgba(255, 159, 67, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 159, 67, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 159, 67, 0); }
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Textos do Cartão */
+.birthday-item h3 { color: #1a4a7a; font-size: 1.2rem; font-weight: 800; margin-bottom: 5px; }
+.birthday-item p { color: #ff9f43; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   17. RODAPÉ (FOOTER) - DESIGN FINAL INSTITUCIONAL
+   ========================================================================== */
+
+.main-footer {
+    position: relative;
+    background-color: #1a4a7a !important; 
+    color: #ffffff;
+    padding: 70px 0 25px;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Imagem de fundo com efeito Overlay */
+.main-footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('assets/estatisticas-bg.jpeg'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.12; 
+    filter: grayscale(100%);
+    z-index: 0;
+}
+
+.footer-container {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Ajuste para 5 colunas com melhor distribuição de espaço */
+    grid-template-columns: 1.2fr 1fr 1fr 1fr 1.2fr; 
+    gap: 30px;
+    padding: 0 25px;
+    align-items: start;
+}
+
+/* LOGO BRANCO E REINVENTADO */
+.footer-logo {
+    max-width: 85px !important;
+    filter: brightness(0) invert(1) !important;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.05);
+}
+
+.footer-col h4 {
+    color: #ff9f43 !important; 
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.footer-content p {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 8px;
+}
+
+/* REDES SOCIAIS */
+.footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.footer-social a {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px; /* Quadrados arredondados para um ar mais moderno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-social a:hover {
+    background: #ff9f43;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(255, 159, 67, 0.4);
+}
+
+/* LINHA FINAL */
+.footer-bottom {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.5px;
+}
+
+
+
+
+
+/* ============================================================
+   VIDEO CANAL - DESKTOP
+   ============================================================ */
+.video-hero-section {
+    position: relative;
+    padding: 100px 0;
+    background: url('assets/hero-fachada.jpeg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; /* Efeito de profundidade */
+    color: #fff;
+}
+
+/* Overlay para escurecer a imagem e destacar o texto */
+.video-bg-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(12, 30, 52, 0.96) 0%, rgba(12, 30, 52, 0.85) 100%);
+    z-index: 1;
+}
+
+.video-content-wrapper {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+/* --- ESCRITAS PROFISSIONAIS --- */
+.video-text-side h2 {
+    font-size: 3.5rem; /* Título grande e forte */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #ffffff;
+    letter-spacing: -1px;
+}
+
+.video-text-side p {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 35px;
+    font-weight: 300;
+}
+
+.badge-live {
+    background: #ff4757;
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(255, 71, 87, 0.3);
+}
+
+/* --- VÍDEO SEM ERRO VISUAL --- */
+.player-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Proporção 16:9 */
+    height: 0;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000; /* Fundo preto enquanto carrega */
+}
+
+.player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100% !important;
+    display: block;
+}
+
+.control-tag {
+    color: #ff9f43;
+    font-weight: 700;
+    margin-right: 25px;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+/* ==========================================================================
+   11. SECÇÃO DO MAPA - DESKTOP
+   ========================================================================== */
+
+.map-section {
+    padding: 100px 0;
+    background-color: #f8fbff;
+    position: relative;
+}
+
+.map-container {
+    width: 90%;
+    max-width: 1200px; 
+    margin: 0 auto;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(12, 30, 52, 0.15); /* Sombra mais profunda */
+    border: 10px solid #ffffff; /* Moldura mais robusta */
+    position: relative;
+    aspect-ratio: 21 / 9; /* Formato Cinema */
+    min-height: 450px;
+    transition: transform 0.3s ease;
+}
+
+.map-container:hover {
+    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+}
+
+.map-container iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(0.2) contrast(1.1); /* Toque profissional no mapa */
+}
+
+/* Rodapé de Endereço */
+.address-footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #0c1e34;
+    padding: 0 20px;
+}
+
+.address-footer p {
+    font-size: 1.3rem; /* Escrita mais profissional */
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1a4a7a;
+}
+
+.address-footer span {
+    display: inline-block;
+    color: #ff9f43;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #ff9f43; /* Detalhe em baixo do Local */
+}
+
+
+
+/* ==========================================================================
+   12. SECÇÃO DIREÇÃO - DESKTOP
+   ========================================================================== */
+
+.management-section {
+    padding: 100px 0;
+    background-color: #fcfcfc;
+    font-family: 'Poppins', sans-serif;
+}
+
+.management-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Força 3 colunas no PC para alinhamento médico */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.director-card {
+    background: #ffffff;
+    border-radius: 25px; /* Bordas mais suaves seguindo o padrão do vídeo */
+    padding: 40px;
+    box-shadow: 0 15px 45px rgba(12, 30, 52, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #f0f5f9;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+}
+
+.director-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 60px rgba(26, 74, 122, 0.08);
+    border-color: #ff9f43;
+}
+
+/* Frase de Destaque / Bio */
+.director-card .bio {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4a5a6b;
+    font-style: italic;
+    margin-bottom: 35px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Aspas decorativas mais profissionais */
+.director-card .bio::before {
+    content: '“';
+    font-size: 5rem;
+    color: rgba(255, 159, 67, 0.15);
+    position: absolute;
+    top: -35px;
+    left: -15px;
+    font-family: 'Georgia', serif;
+}
+
+/* Rodapé do Diretor */
+.director-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-top: 2px solid #f8faff;
+    padding-top: 25px;
+}
+
+.image-container {
+    width: 70px;
+    height: 70px;
+    min-width: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    outline: 2px solid #ff9f43; /* Identidade Moxico */
+}
+
+.director-info .text h3 {
+    font-size: 1.15rem; /* Nome com mais presença */
+    color: #0c1e34;
+    margin: 0 0 5px 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.director-info .text p {
+    font-size: 0.8rem;
+    color: #ff9f43;
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px; /* Estilo de cargo executivo */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   14. WHATSAPP FLUTUANTE - COM ANIMAÇÃO DE ATENÇÃO
+   ========================================================================== */
+
+.whatsapp-flutuante {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366; 
+    color: #FFF !important;
+    border-radius: 50%; /* Perfeitamente circular */
+    text-align: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 9999; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+    transition: all 0.3s ease;
+    animation: pulse-whatsapp 2s infinite;
+}
+
+@keyframes pulse-whatsapp {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-flutuante:hover {
+    transform: scale(1.1);
+    background-color: #128c7e;
+    animation: none;
+}
+
+/* Tooltip - Apenas visível no Desktop */
+.tooltip-whatsapp {
+    position: absolute;
+    right: 75px;
+    background-color: #0c1e34;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    pointer-events: none;
+}
+
+.tooltip-whatsapp::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent #0c1e34;
+}
+
+.whatsapp-flutuante:hover .tooltip-whatsapp {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   15. MODAL DE LOGIN ADMINISTRATIVO
+   ========================================================================== */
+
+.modal-admin {
+    display: none; /* Escondido por padrão */
+    position: fixed;
+    z-index: 10001; /* Acima do Lightbox e do WhatsApp */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(12, 30, 52, 0.85);
+    backdrop-filter: blur(8px); /* Blur ligeiramente mais forte para foco total */
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 8% auto; /* Um pouco mais para cima no ecrã */
+    padding: 40px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px; /* Largura um pouco maior para conforto visual */
+    position: relative;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-header {
+    margin-bottom: 30px;
+}
+
+.login-logo {
+    display: block;      /* Garante que o logo se comporte como bloco */
+    max-width: 100px;    /* Tamanho ideal para o modal */
+    height: auto;
+    margin: 0 auto 15px; /* O "0 auto" centraliza horizontalmente */
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); /* Toque de profundidade */
+}
+
+.login-header h3 { 
+    color: #0c1e34; 
+    margin: 0; 
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.login-header p { 
+    font-size: 0.85rem; 
+    color: #64748b; 
+    margin-top: 5px;
+}
+
+/* Campos de Entrada */
+.input-group { 
+    text-align: left; 
+    margin-bottom: 20px; 
+}
+
+.input-group label { 
+    display: block; 
+    font-size: 0.8rem; 
+    font-weight: 700; 
+    margin-bottom: 8px; 
+    color: #1a4a7a;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input { 
+    width: 100%; 
+    padding: 14px; 
+    border: 2px solid #f1f4f6; 
+    border-radius: 12px; 
+    font-size: 1rem;
+    outline: none; 
+    transition: all 0.3s ease;
+    background-color: #f8fafc;
+}
+
+.input-group input:focus { 
+    border-color: #ff9f43; 
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(255, 159, 67, 0.1);
+}
+
+.btn-login-submit {
+    width: 100%; 
+    background: #0c1e34; 
+    color: white; 
+    padding: 15px;
+    border: none; 
+    border-radius: 12px; 
+    font-weight: 700; 
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-login-submit:hover { 
+    background: #ff9f43; 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 159, 67, 0.3);
+}
+
+.close-modal {
+    position: absolute; 
+    right: 25px; 
+    top: 20px; 
+    font-size: 32px;
+    font-weight: 300; 
+    color: #cbd5e1; 
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover { color: #ef4444; }
+
+.error-msg { 
+    color: #e74c3c; 
+    font-size: 0.85rem; 
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+
+
+
+
+.cta-agendamento {
+    background: linear-gradient(135deg, #f8fbff 0%, #edf2f7 100%);
+    padding: 100px 20px; /* Mais respiro vertical */
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Detalhe decorativo "Moxico Ouro" */
+.cta-agendamento::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 159, 67, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.cta-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px; /* Maior espaçamento para clareza */
+    position: relative;
+    z-index: 2;
+}
+
+.cta-text {
+    flex: 1.5;
+}
+
+.cta-text h2 {
+    color: #0c1e34;
+    font-size: 2.5rem; /* Texto maior no desktop */
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.cta-text p {
+    color: #5a6d81;
+    font-size: 1.2rem;
+    max-width: 700px;
+    line-height: 1.8;
+}
+
+.btn-agendar-main {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px 50px;
+    background: linear-gradient(90deg, #ff9f43, #ff7e01);
+    color: white !important;
+    text-decoration: none;
+    font-weight: 800;
+    border-radius: 50px;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 12px 30px rgba(255, 159, 67, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-agendar-main:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(255, 159, 67, 0.4);
+}
+
+
+
+
+
+
+
+
+
+
+/* MOBILE */
+@media (max-width: 768px) {
+.brand-text {
+        max-width: 150px; /* Limita a largura para evitar empurrar ícones */
+        line-height: 1.0; /* Aproxima ainda mais as linhas */
+    }
+.maternidade-txt {
+        font-size: 7.5px !important; /* Tamanho mínimo para legibilidade */
+        letter-spacing: 0.5px;
+        white-space: nowrap; /* Impede que o texto quebre em 3 linhas */
+    }
+.jamba-txt {
+        font-size: 14px !important; /* Tamanho otimizado para mobile */
+        margin-top: 0px;
+        letter-spacing: -0.2px; /* Aproxima as letras para ganhar espaço */
+    }
+    
+ .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Escondido */
+        width: 280px;
+        height: 100vh;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 80px 30px;
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+        z-index: 9999;
+    }
+
+    .nav-links.active { right: 0; } /* Mostra menu */
+
+    .nav-links li { margin-bottom: 25px; }
+    .nav-links a { font-size: 18px; color: #0c1e34; }
+
+    /* Movemos o cadeado para dentro do menu ou ajustamos na barra */
+    .nav-actions { margin-right: 15px; }
+    
+    /* Ícone Hambúrguer Moderno */
+    .menu-icon {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    .bar {
+        width: 25px;
+        height: 3px;
+        background-color: #0c1e34;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+
+
+
+
+
+/* HERO */
+
+.hero-screen {
+        height: 60vh; /* Menor no mobile para o utilizador ver conteúdo abaixo */
+        min-height: 400px;
+        overflow: visible !important;
+    }
+
+    .hero-content {
+        width: 95%;
+    }
+
+    .hero-subtitle {
+        font-size: 0.85rem !important;
+        letter-spacing: 1.5px !important;
+    }
+
+    .hero-title {
+        font-size: 1.8rem !important; /* Reduzido para não quebrar linha errado */
+        -webkit-text-stroke: 0px !important; /* Remove contorno para limpar visual */
+    }
+
+    .hero-title span {
+        font-size: 2rem !important;
+        margin-top: 5px !important;
+    }
+
+    .hero-divider {
+        margin: 15px auto !important;
+        width: 60px !important;
+    }
+
+    .hero-motto {
+        font-size: 1rem !important;
+        line-height: 1.4 !important;
+    }
+
+
+
+
+
+
+
+
+/* AGENDAMENTO */
+.cta-agendamento {
+        padding: 60px 25px;
+        text-align: center; /* Centraliza o texto no telemóvel */
+    }
+
+    .cta-content {
+        flex-direction: column; /* Empilha os elementos */
+        gap: 35px;
+    }
+
+    .cta-text {
+        min-width: 100%;
+    }
+
+    .cta-text h2 {
+        font-size: 1.8rem; /* Reduz tamanho para ecrãs pequenos */
+        margin-bottom: 15px;
+    }
+
+    .cta-text p {
+        font-size: 1.05rem;
+    }
+
+    .cta-button-area {
+        width: 100%;
+        min-width: 100%;
+    }
+
+    .btn-agendar-main {
+        width: 100%; /* Botão ocupa a largura total */
+        justify-content: center;
+        padding: 18px 30px;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    /* Remove o detalhe decorativo para limpar o visual mobile */
+    .cta-agendamento::before {
+        display: none;
+    }
+
+
+
+
+
+
+/* QUEM SOMOS */
+.quem-somos {
+        padding: 50px 20px !important; /* Respiro lateral para o texto não colar nas bordas */
+        background-color: #ffffff;
+    }
+
+    /* Título Principal (QUEM SOMOS) */
+    .titulo-igual {
+        font-size: 20px !important;
+        color: #0c1e34; /* Azul Profundo da Maternidade */
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-weight: 800;
+        margin-bottom: 15px !important;
+        text-align: center;
+    }
+
+    /* Linhas de Destaque (Laranja) */
+    .titulo-igual::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #ff9f43; /* Laranja Jamba conforme imagem */
+        margin: 10px auto 0;
+        border-radius: 2px;
+    }
+
+    .about-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        padding: 10px 0;
+    }
+
+    .about-card {
+        width: 100% !important;
+        background: #ffffff !important;
+        border-radius: 20px !important;
+        padding: 25px 20px !important;
+        text-align: center;
+        /* Sombra suave para dar profundidade sem poluir */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04) !important;
+        border: 1px solid #f1f5f9 !important;
+        transition: transform 0.3s ease;
+    }
+
+    /* Ícones Circulares para cada Card */
+    .card-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background-color: #fff4e8; /* Fundo laranja clarinho */
+        color: #ff9f43; /* Laranja Jamba */
+        font-size: 26px !important;
+        margin: 0 auto 15px !important;
+        border-radius: 50%;
+    }
+
+    /* Títulos Internos (Missão, Visão, Valores) */
+    .about-card h3 {
+        font-size: 18px !important;
+        color: #0c1e34 !important;
+        font-weight: 700 !important;
+        margin-bottom: 12px !important;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Descrição dos Cards */
+    .about-card p {
+        font-size: 14.5px !important;
+        line-height: 1.6 !important;
+        color: #64748b !important;
+        margin: 0 !important;
+        text-align: center !important; /* Centralizado para harmonizar com o ícone */
+    }
+
+    /* Ajuste específico para o Card de Valores (geralmente uma lista) */
+    .about-card ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .about-card ul li {
+        background: #ebf1f7;
+        color: #1a4a7a;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+
+
+
+
+    
+
+/* SERVIÇOS */
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 50px 20px !important;
+    }
+
+    .services-section .titulo-principal {
+        font-size: 1.6rem !important; /* Título mais discreto no mobile */
+        margin-bottom: 30px !important;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr !important; /* Coluna única centralizada */
+        width: 100% !important;
+    }
+
+    .service-card {
+        width: 100% !important;
+        max-width: 320px !important; /* Não deixa o card "esticar" demais */
+        margin: 0 auto !important; /* CENTRALIZA O CARD NA TELA */
+        padding: 30px 20px !important;
+    }
+
+    .icon-circle {
+        width: 70px !important;
+        height: 70px !important;
+        font-size: 1.8rem !important;
+    }
+}
+
+
+
+
+
+/* BIOGRAFIA */
+.bio-section {
+        padding: 50px 0 !important;
+    }
+
+    .bio-container {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 0 25px !important;
+    }
+
+    /* Imagem Centralizada com Sombra Suave */
+    .bio-image {
+        width: 100% !important;
+        max-width: 280px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .bio-image img {
+        height: auto !important;
+        border-radius: 25px !important;
+        border-width: 6px !important;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    }
+
+    .bio-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Garante que o container foca no centro */
+        padding: 0 20px !important;
+    }
+
+    .bio-text h2 {
+        text-align: center !important;
+        font-size: 1.8rem !important;
+        max-width: 85%; /* Evita que o título toque nas bordas */
+        margin: 0 auto 25px auto !important;
+        line-height: 1.2;
+    }
+
+    .bio-text p {
+        text-align: center !important;
+        font-size: 1.05rem !important;
+        line-height: 1.8; /* Aumenta o espaço entre linhas para dar leveza */
+        color: #5a6d81;
+        max-width: 290px; /* O SEGREDO: Estreita o bloco para o centro parecer sólido */
+        margin: 0 auto 15px auto !important;
+        word-spacing: -1px; /* Melhora o encaixe das palavras centralizadas */
+    }
+
+    /* Ajuste da frase final entre aspas */
+    .bio-text p:last-child {
+        font-style: italic;
+        color: #1a4a7a;
+        margin-top: 20px !important;
+        max-width: 250px; /* Mais estreito para destacar como citação */
+        border-top: 1px solid #e2e8f0;
+        padding-top: 15px;
+    }
+
+
+
+
+
+
+    /* ESTATISTICAS */
+    .stats-section {
+        padding: 60px 0 !important;
+        background-attachment: scroll !important; /* Desativa parallax no mobile para fluidez */
+        overflow: visible !important;
+    }
+
+    /* Transforma o Grid em 1 coluna no telemóvel */
+    .stats-grid {
+        grid-template-columns: 1fr !important; 
+        gap: 20px !important;
+        width: 85% !important;
+    }
+
+    .stat-card {
+        padding: 30px 15px !important;
+    }
+
+    .stat-number {
+        font-size: 2.8rem !important; /* Reduz levemente o número no mobile */
+    }
+
+    .stat-card p {
+        font-size: 0.75rem !important;
+        letter-spacing: 1px !important;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+/* GALERIA */
+
+.galeria-section, .news-section {
+        padding: 60px 0 !important;
+    }
+
+    .section-header h2 {
+        font-size: 1.8rem !important;
+        padding: 0 20px;
+    }
+
+    /* Galeria em 2 colunas para parecer um feed moderno */
+    .galeria-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    /* Notícias em coluna única centralizada */
+    .news-grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
+    }
+
+    .news-card {
+        max-width: 340px !important;
+        margin: 0 auto !important;
+    }
+
+    /* Centralização Absoluta do Conteúdo de Notícias */
+    .news-info {
+        text-align: center !important;
+        padding: 25px !important;
+    }
+
+    .news-tag {
+        margin: 0 auto 15px auto !important;
+        display: table !important;
+    }
+
+    .news-link {
+        justify-content: center !important;
+        background: #f0f9ff;
+        padding: 10px 20px;
+        border-radius: 50px;
+        margin-top: 15px;
+    }
+
+    /* Ajuste de altura para imagens no mobile */
+    .galeria-item { height: 180px !important; }
+    .news-thumb { height: 190px !important; }
+
+
+
+
+
+
+.news-body h2, 
+.news-body h3 {
+    margin-top: 35px !important; /* Cria espaço com o texto anterior */
+    margin-bottom: 15px !important; /* Cria espaço com o texto seguinte */
+    font-size: 1.4rem !important;
+    line-height: 1.3;
+    text-align: left;
+    /* Impede que as palavras sejam cortadas ao meio (como "For-mação") */
+    hyphens: none !important; 
+    word-break: normal !important;
+    overflow-wrap: break-word;
+}
+
+/* 2. AJUSTE DO PARÁGRAFO */
+.news-body p {
+    margin-bottom: 20px; /* Garante que um parágrafo não grude no outro */
+    hyphens: none !important;
+    text-align: left; /* No mobile, alinhar à esquerda evita buracos e hífens */
+}
+
+/* 3. AJUSTE DE CITAÇÕES (Caso use o traço como na imagem) */
+.news-body blockquote, 
+.news-body .quote-text {
+    margin: 25px 0;
+    padding-left: 15px;
+    border-left: 3px solid var(--jamba-orange);
+    font-style: italic;
+}
+
+
+
+
+
+/* BOTÃO WHATSAPP */
+.whatsapp-flutuante {
+        width: 50px;
+        height: 50px;
+        bottom: 20px; /* Mais próximo da borda inferior */
+        right: 20px;  /* Mais próximo da borda lateral */
+        font-size: 26px;
+    }
+
+    /* Esconde a tooltip no mobile para não atrapalhar o toque */
+    .tooltip-whatsapp {
+        display: none !important;
+    }
+    
+    /* Pulsação mais discreta no mobile para poupar bateria/processamento */
+    @keyframes pulse-whatsapp {
+        0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+        70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+
+
+
+
+
+
+
+/* FUNCIONARIO DO MES */
+.employee-month-section {
+        padding: 60px 0 !important;
+    }
+
+    .employee-card-wrapper {
+        flex-direction: column-reverse !important; /* Texto primeiro, imagem depois? Não, imagem topo é melhor */
+        flex-direction: column !important;
+        padding: 40px 25px !important;
+        gap: 40px !important;
+        margin: 0 20px !important;
+        text-align: center !important;
+    }
+
+    .photo-frame {
+        width: 250px !important;
+        height: 250px !important;
+        margin: 0 auto !important;
+    }
+
+    .photo-frame img {
+        border-width: 8px !important;
+    }
+
+    .award-icon {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.8rem !important;
+        bottom: 10px !important;
+        right: 10px !important;
+    }
+
+    .employee-content h2 {
+        font-size: 1.8rem !important;
+    }
+
+    .employee-quote {
+        padding-left: 0 !important;
+        border-left: none !important;
+        border-top: 2px solid #e2e8f0;
+        padding-top: 20px !important;
+        font-size: 1.1rem !important;
+        max-width: 280px;
+        margin: 0 auto 30px auto !important;
+    }
+
+    .employee-name {
+        font-size: 1.5rem !important;
+    }
+
+    .badge-month {
+        letter-spacing: 1px !important;
+        font-size: 0.7rem !important;
+    }
+
+
+
+
+/* ANIVERSARIANTE DO DIA */
+.birthday-section {
+        padding: 60px 0 !important;
+    }
+
+    /* Redução do Título - Agora elegante e legível */
+    .section-header-compact h2 {
+        font-size: 1.6rem !important; /* Tamanho profissional para telemóvel */
+        margin-bottom: 30px !important;
+        padding: 0 15px;
+    }
+
+    /* Grelha de 2 colunas para caberem 6 pessoas sem muito scroll */
+    .birthday-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+        padding: 0 15px !important;
+    }
+
+    .birthday-item {
+        width: 100% !important;
+        padding: 25px 15px !important;
+        border-radius: 20px !important;
+    }
+
+    .image-wrapper {
+        width: 90px !important;
+        height: 90px !important;
+        border-width: 3px !important;
+        margin-bottom: 15px !important;
+    }
+
+    .birthday-item h3 { font-size: 1rem !important; }
+    .birthday-item p { font-size: 0.65rem !important; } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MODAL LOGIN */
+.modal-admin {
+        align-items: flex-end; /* No mobile, o modal pode vir de baixo ou centralizar */
+        padding: 15px;
+    }
+
+    .modal-content {
+        margin: auto; /* Centraliza verticalmente no mobile */
+        padding: 30px 20px;
+        width: 95%; /* Ocupa quase toda a largura lateral */
+        border-radius: 28px; /* Cantos mais arredondados para um ar moderno */
+        box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+    }
+
+    .login-logo {
+        max-width: 80px; /* Redução leve para ganhar espaço vertical */
+        margin-bottom: 10px;
+    }
+
+    .login-header h3 {
+        font-size: 1.3rem; /* Texto mais compacto */
+    }
+
+    .login-header p {
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste de Inputs para Toque (Touch Friendly) */
+    .input-group label {
+        font-size: 0.75rem;
+    }
+
+    .input-group input {
+        padding: 16px; /* Aumentamos o enchimento para facilitar o toque */
+        font-size: 16px; /* CRÍTICO: Impede que o iOS faça zoom automático ao focar */
+        background-color: #f1f5f9; /* Fundo um pouco mais escuro para contraste no sol */
+    }
+
+    .btn-login-submit {
+        padding: 18px; /* Botão maior para o polegar */
+        font-size: 1.1rem;
+        margin-top: 5px;
+    }
+
+    .close-modal {
+        top: 15px;
+        right: 20px;
+        font-size: 36px; /* X maior para ser fácil de fechar com o dedo */
+        padding: 10px; /* Aumenta a área de clique oculta */
+    }
+
+    .error-msg {
+        font-size: 0.8rem;
+        padding: 10px;
+        background: rgba(231, 76, 60, 0.1);
+        border-radius: 8px;
+    }
+
+
+
+
+
+/* NOTICIAS */
+ .galeria-section, .news-section {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr !important; /* 1 coluna em telemóveis */
+        gap: 20px;
+    }
+
+    .news-thumb {
+        height: 200px;
+    }
+
+    .news-info {
+        padding: 25px 20px;
+    }
+
+
+
+}
+
+/* Ajuste específico para quando o teclado abre em ecrãs muito pequenos */
+@media (max-height: 600px) {
+    .modal-content {
+        margin: 5% auto;
+        padding: 20px;
+    }
+    .login-header {
+        margin-bottom: 15px;
+    }
+    .login-logo {
+        display: none; /* Esconde o logo em ecrãs minúsculos para focar no login */
+    }
+
+
+}
+
+
+
+
+
+
+@media (max-width: 991px) {
+
+
+
+
+
+
+
+/* CANAL YOUTUBE */
+.video-hero-section {
+        padding: 60px 0; /* Reduz o espaçamento interno no mobile */
+        background-attachment: scroll; /* Desativa o parallax em dispositivos móveis para melhor performance */
+    }
+
+    .video-content-wrapper {
+        grid-template-columns: 1fr; /* Muda de duas colunas para uma única coluna */
+        gap: 40px;
+        text-align: center; /* Centraliza o texto para melhor harmonia */
+    }
+
+    /* Inverte a ordem: Vídeo passa para cima, Texto para baixo */
+    .video-text-side {
+        order: 2;
+        padding: 0 10px;
+    }
+
+    .video-player-side {
+        order: 1;
+        width: 100%;
+    }
+
+    /* Ajuste das Escritas no Mobile */
+    .video-text-side h2 {
+        font-size: 2.2rem; /* Tamanho mais equilibrado para telemóveis */
+        line-height: 1.2;
+    }
+
+    .video-text-side p {
+        font-size: 1.1rem;
+        max-width: 100%;
+        margin-bottom: 25px;
+    }
+
+    /* Ajuste dos ícones de controle */
+    .video-controls-info {
+        display: flex;
+        flex-direction: column; /* Empilha as tags no mobile se forem grandes */
+        gap: 15px;
+        align-items: center;
+    }
+
+    .control-tag {
+        margin-right: 0;
+        font-size: 0.85rem;
+    }
+
+    /* Ajuste do Container do Player */
+    .player-container {
+        border-radius: 15px; /* Bordas ligeiramente menores para ecrãs pequenos */
+        box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        border-width: 3px; /* Borda mais fina */
+    }
+}
+
+/* Ajustes específicos para telemóveis muito pequenos */
+@media (max-width: 480px) {
+    .video-text-side h2 {
+        font-size: 1.8rem;
+    }
+
+    .video-hero-section {
+        padding: 40px 0;
+    }
+
+
+
+
+
+
+
+
+
+/* MAPA */
+.map-section {
+        padding: 60px 0;
+    }
+
+    .map-container {
+        width: 95%; /* Ocupa mais espaço na tela do telemóvel */
+        aspect-ratio: 4 / 3; /* Formato mais alto para facilitar o toque */
+        min-height: 350px;
+        border-width: 6px; /* Moldura mais fina para não roubar espaço */
+        border-radius: 20px;
+    }
+
+    .address-footer p {
+        font-size: 1.1rem;
+    }
+    
+    /* Desativa o filtro no mobile para facilitar a visualização em brilho baixo */
+    .map-container iframe {
+        filter: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container {
+        min-height: 300px;
+        aspect-ratio: 1 / 1; /* Quadrado perfeito em telas muito pequenas */
+    }
+    
+    .address-footer span {
+        font-size: 0.75rem;
+    }
+
+
+
+
+
+
+
+
+
+/* DIRECÇÃO */
+
+.management-section {
+        padding: 60px 20px; /* Um pouco de respiro nas laterais */
+        background-color: #fcfdfe; /* Fundo quase branco para suavidade */
+    }
+
+    .management-grid {
+        display: flex;
+        flex-direction: column; /* Força um card por linha */
+        gap: 25px;
+        width: 100%;
+    }
+
+    .director-card {
+        padding: 25px; /* Espaçamento interno mais compacto */
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+        background: #ffffff;
+        border: 1px solid #f1f5f9;
+    }
+
+    .director-card .bio {
+        font-size: 0.95rem; /* Fonte ligeiramente menor para ecrãs pequenos */
+        line-height: 1.6;
+        margin-bottom: 25px;
+        color: #475569;
+    }
+
+    .director-info {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-top: 1px solid #f8fafc;
+        padding-top: 20px;
+    }
+
+    /* Foto do Diretor no Mobile */
+    .image-container {
+        width: 65px;
+        height: 65px;
+        min-width: 65px;
+        border-radius: 50%;
+        border: 2px solid #00BFFF; /* Aro azul da marca */
+    }
+
+    .director-info .text h3 {
+        font-size: 1.05rem; /* Ajuste para não quebrar a linha do nome */
+        color: #0c1e34;
+        font-weight: 700;
+        margin-bottom: 2px;
+    }
+
+    .director-info .text p {
+        font-size: 0.8rem;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Ajustes Extras para Telemóveis Muito Pequenos */
+@media (max-width: 480px) {
+    .management-section {
+        padding: 40px 15px;
+    }
+    
+    .director-card {
+        padding: 20px;
+    }
+
+    .image-container {
+        width: 55px;
+        height: 55px;
+        min-width: 55px;
+    }
+    
+    .director-info .text h3 {
+        font-size: 1rem;
+    }
+
+
+
+
+
+
+/* RODAPE */
+    .main-footer {
+        padding: 50px 0 20px;
+        text-align: center; /* Centraliza textos para melhor estética mobile */
+    }
+
+    .footer-container {
+        /* Transforma as 5 colunas numa lista vertical única */
+        grid-template-columns: 1fr !important; 
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    /* Centralização dos Elementos */
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        max-width: 100px !important; /* Ligeiramente maior no mobile para destaque */
+        margin: 0 auto 15px;
+    }
+
+    /* Títulos das Colunas no Mobile */
+    .footer-col h4 {
+        font-size: 1rem;
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Linha decorativa centralizada sob o título */
+    .footer-col h4::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 2px;
+        background: #ff9f43;
+    }
+
+    .footer-content p {
+        font-size: 0.9rem;
+        max-width: 300px; /* Evita que o texto estique demasiado */
+        margin: 0 auto 10px;
+    }
+
+    /* Redes Sociais Centralizadas */
+    .footer-social {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .footer-social a {
+        width: 40px; /* Botões ligeiramente maiores para toque (Touch Friendly) */
+        height: 40px;
+    }
+
+    /* Linha Final de Copyright */
+    .footer-bottom {
+        margin-top: 40px;
+        padding: 20px 10px 0;
+        font-size: 0.75rem;
+        line-height: 1.5;
+    }
+}
+
+@media (max-width: 1024px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 colunas em tablets */
+    }
+}
+
+@media (max-width: 768px) {
+    .galeria-section, .news-section {
+        padding: 60px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr !important; /* 1 coluna em telemóveis */
+        gap: 20px;
+    }
+
+    .news-thumb {
+        height: 200px;
+    }
+
+    .news-info {
+        padding: 25px 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
