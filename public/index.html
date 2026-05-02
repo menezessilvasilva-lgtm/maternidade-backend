@@ -1088,7 +1088,7 @@ window.onload = async function() {
 async function carregarFuncionario() {
     try {
         // No seu index.html, altere apenas esta linha:
-const res = await fetch('http://127.0.0.1:5000/api/config/funcionario_mes');
+const res = await fetch('/api/config/funcionario_mes');
         
         // Verifica se a resposta foi bem-sucedida antes de prosseguir
         if (!res.ok) throw new Error("Erro ao buscar dados do servidor");
@@ -1187,8 +1187,8 @@ async function carregarNoticiasHome() {
 
     for (let i = 1; i <= totalNoticias; i++) {
         try {
-            // BUSCA NO IP 127.0.0.1 (Porta 5000 do Node.js)
-            const response = await fetch(`http://127.0.0.1:5000/api/config/noticia_home_${i}`);
+           // Alterado para caminho relativo: essencial para o site carregar no Render
+const response = await fetch(`/api/config/noticia_home_${i}`);
             
             if (response.ok) {
                 const data = await response.json();
@@ -1228,7 +1228,7 @@ window.addEventListener('load', carregarNoticiasHome);
 
 <script>
 // Configuração do servidor
-const API_BASE_URL = 'http://127.0.0.1:5000/api/config';
+const API_BASE_URL = '/api/config';
 
 async function carregarDadosDoSite() {
     console.log("Iniciando carregamento de dados...");
